@@ -1,0 +1,45 @@
+{
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "Today's grocery list"
+      }
+    }
+  ],
+  "description": [
+    {
+      "type": "text",
+      "text": {
+        "content": "Grocery list for just kale 🥬"
+      }
+    }
+  ],
+  "properties": {
+    "+1": null,
+    "Photo": {
+      "type": "files",
+      "files": {}
+    },
+    "Store availability": {
+      "type": "multi_select",
+      "multi_select": {
+        "options": [
+          {
+            "name": "Duc Loi Market"
+          },
+          {
+            "name": "Rainbow Grocery"
+          },
+          {
+            "name": "Gus's Community Market"
+          },
+          {
+            "name": "The Good Life Grocery",
+            "color": "orange"
+          }
+        ]
+      }
+    }
+  }
+}

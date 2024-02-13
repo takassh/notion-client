@@ -1,0 +1,23 @@
+on:
+  push:
+    tags:
+      - 'v*'
+name: Release
+
+jobs:
+  build-release:
+    name: Release Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Release Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features
+      - name: Cargo Publish
+        uses: actions-rs/cargo@v1
+        with:
+          command: publish
+          args: --token "${{ secrets.CRATES_TOKEN }}"
