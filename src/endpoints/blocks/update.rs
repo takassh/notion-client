@@ -1,4 +1,8 @@
-use crate::{endpoints::NOTION_URI, objects::{block::Block, Response}, NotionClientError};
+use crate::{
+    endpoints::NOTION_URI,
+    objects::{block::Block, Response},
+    NotionClientError,
+};
 
 use super::BlocksEndpoint;
 

@@ -109,16 +109,12 @@ fn test_retrieve_block_children_200() {
 
 #[test]
 fn test_update_200() {
-    let result = serde_json::from_str::<Block>(include_str!(
-        "tests/update_200.json"
-    ));
+    let result = serde_json::from_str::<Block>(include_str!("tests/update_200.json"));
     assert!(result.is_ok())
 }
 
 #[test]
 fn test_delete_200() {
-    let result = serde_json::from_str::<Block>(include_str!(
-        "tests/delete_200.json"
-    ));
+    let result = serde_json::from_str::<Block>(include_str!("tests/delete_200.json"));
     assert!(result.is_ok())
 }
