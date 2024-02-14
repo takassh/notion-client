@@ -6,6 +6,6 @@ use crate::objects::block::Block;
 #[skip_serializing_none]
 #[derive(Serialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct AppendBlockChildrenRequest {
-    pub children: Option<Block>,
+    pub children: Vec<Block>,
     pub after: Option<String>,
 }

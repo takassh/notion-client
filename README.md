@@ -1,6 +1,7 @@
 # notion-client
 [![Build](https://github.com/takassh/notion-client/actions/workflows/build.yml/badge.svg)](https://github.com/takassh/notion-client/actions/workflows/build.yml)
 [![Notion API](https://files.readme.io/a267aac-notion-devs-logo.svg)](https://developers.notion.com)
+[![Crates.io](https://img.shields.io/crates/v/notion-client?style=for-the-badge)](https://crates.io/crates/notion-client)
 
 Notion API client library for rust.
 
@@ -70,7 +71,7 @@ async fn main() {
 - [x] support comments endpoint
 - [x] support search endpoint
 - [ ] support authentication endpoint
-- [ ] add test to blocks endpoint
+- [x] add test to blocks endpoint
 - [ ] add test to pages endpoint
 - [x] add test to databases endpoint
 - [ ] add test to users endpoint

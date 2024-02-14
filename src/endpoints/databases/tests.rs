@@ -305,7 +305,6 @@ fn test_update_request() {
 #[test]
 fn test_create_200() {
     let result = serde_json::from_str::<Database>(include_str!("tests/create_200.json"));
-    print!("{:#?}", result);
     assert!(result.is_ok())
 }
 

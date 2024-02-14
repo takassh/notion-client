@@ -1,12 +1,9 @@
 pub mod request;
+pub mod response;
 
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{block::Block, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
 
-use self::request::AppendBlockChildrenRequest;
+use self::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse};
 
 use super::BlocksEndpoint;
 
@@ -15,7 +12,7 @@ impl BlocksEndpoint {
         &self,
         block_id: &str,
         request: AppendBlockChildrenRequest,
-    ) -> Result<Block, NotionClientError> {
+    ) -> Result<AppendBlockChildrenResponse, NotionClientError> {
         let json = serde_json::to_string(&request)
             .map_err(|e| NotionClientError::FailedToSerialize { source: e })?;
 

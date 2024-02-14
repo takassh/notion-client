@@ -5,24 +5,26 @@ use serde_with::skip_serializing_none;
 use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
 
 #[skip_serializing_none]
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct Block {
-    pub object: String,
-    pub id: String,
-    pub parent: Parent,
+    pub object: Option<String>,
+    pub id: Option<String>,
+    pub parent: Option<Parent>,
     #[serde(flatten)]
     pub block_type: BlockType,
-    pub created_time: DateTime<Utc>,
-    pub created_by: User,
-    pub last_edited_time: DateTime<Utc>,
-    pub last_edited_by: User,
-    pub archived: bool,
-    pub has_children: bool,
+    pub created_time: Option<DateTime<Utc>>,
+    pub created_by: Option<User>,
+    pub last_edited_time: Option<DateTime<Utc>>,
+    pub last_edited_by: Option<User>,
+    pub archived: Option<bool>,
+    pub has_children: Option<bool>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum BlockType {
+    #[default]
+    None,
     Bookmark {
         bookmark: BookmarkValue,
     },
@@ -117,8 +119,8 @@ pub enum BlockType {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct BookmarkValue {
-    caption: Vec<RichText>,
-    url: String,
+    pub caption: Vec<RichText>,
+    pub url: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -133,26 +135,26 @@ pub struct BulletedListItemValue {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct CalloutValue {
-    rich_text: Vec<RichText>,
-    icon: Icon,
-    color: TextColor,
+    pub rich_text: Vec<RichText>,
+    pub icon: Icon,
+    pub color: TextColor,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct ChildDatabaseValue {
-    title: String,
+    pub title: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct ChildPageValue {
-    title: String,
+    pub title: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct CodeValue {
-    caption: Vec<RichText>,
-    rich_text: Vec<RichText>,
-    language: Language,
+    pub caption: Vec<RichText>,
+    pub rich_text: Vec<RichText>,
+    pub language: Language,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -166,38 +168,39 @@ pub struct DividerValue {}
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct EmbedValue {
-    url: String,
+    pub url: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct EquationValue {
-    expression: String,
+    pub expression: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct FileValue {
-    caption: Vec<RichText>,
+    pub caption: Vec<RichText>,
     #[serde(flatten)]
-    file_type: File,
-    name: String,
+    pub file_type: File,
+    pub name: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[skip_serializing_none]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct HeadingsValue {
-    rich_text: Vec<RichText>,
-    color: TextColor,
-    is_toggleable: bool,
+    pub rich_text: Vec<RichText>,
+    pub color: Option<TextColor>,
+    pub is_toggleable: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct ImageValue {
     #[serde(flatten)]
-    file_type: File,
+    pub file_type: File,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct LinkPreviewValue {
-    url: String,
+    pub url: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -207,18 +210,19 @@ pub struct NumberedListItemValue {
     pub children: Vec<Block>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[skip_serializing_none]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct ParagraphValue {
     pub rich_text: Vec<RichText>,
-    pub color: TextColor,
-    pub children: Vec<Block>,
+    pub color: Option<TextColor>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct PdfValue {
-    caption: Vec<RichText>,
+    pub caption: Vec<RichText>,
     #[serde(flatten)]
-    file_type: File,
+    pub file_type: File,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -242,46 +246,47 @@ pub enum SyncedFrom {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TableValue {
-    table_width: u32,
-    has_column_header: bool,
-    has_row_header: bool,
+    pub table_width: u32,
+    pub has_column_header: bool,
+    pub has_row_header: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TableRowsValue {
-    cells: Vec<Block>,
+    pub cells: Vec<Block>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TableOfContentsValue {
-    color: TextColor,
+    pub color: TextColor,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TemplateValue {
-    rich_text: Vec<RichText>,
-    children: Vec<Block>,
+    pub rich_text: Vec<RichText>,
+    pub children: Vec<Block>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[skip_serializing_none]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct ToDoValue {
-    rich_text: Vec<RichText>,
-    checked: bool,
-    color: TextColor,
-    children: Vec<Block>,
+    pub rich_text: Vec<RichText>,
+    pub checked: Option<bool>,
+    pub color: Option<TextColor>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct ToggleBlocksValue {
-    rich_text: Vec<RichText>,
-    color: TextColor,
-    children: Vec<Block>,
+    pub rich_text: Vec<RichText>,
+    pub color: TextColor,
+    pub children: Vec<Block>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct VideoValue {
     #[serde(flatten)]
-    file_type: File,
+    pub file_type: File,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Copy, Clone)]
