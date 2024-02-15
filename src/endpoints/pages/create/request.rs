@@ -4,7 +4,10 @@ use serde::Serialize;
 use serde_with::skip_serializing_none;
 
 use crate::objects::{
-    block::Block, file::File, page::{Icon, PageProperty}, parent::Parent
+    block::Block,
+    file::File,
+    page::{Icon, PageProperty},
+    parent::Parent,
 };
 
 #[skip_serializing_none]
