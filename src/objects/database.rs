@@ -9,7 +9,6 @@ use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user:
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Eq, PartialEq, Debug, Clone)]
 pub struct Database {
-    pub object: String,
     pub id: Option<String>,
     pub created_time: DateTime<Utc>,
     pub created_by: Option<User>,

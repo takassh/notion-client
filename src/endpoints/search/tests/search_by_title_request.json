@@ -1,0 +1,11 @@
+{
+  "query": "External tasks",
+  "filter": {
+    "value": "database",
+    "property": "object"
+  },
+  "sort": {
+    "direction": "ascending",
+    "timestamp": "last_edited_time"
+  }
+}

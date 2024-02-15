@@ -8,5 +8,5 @@ use crate::objects::{parent::Parent, rich_text::RichText};
 pub struct CreateCommentRequest {
     pub parent: Option<Parent>,
     pub discussion_id: Option<Vec<RichText>>,
-    pub rich_text: RichText,
+    pub rich_text: Vec<RichText>,
 }

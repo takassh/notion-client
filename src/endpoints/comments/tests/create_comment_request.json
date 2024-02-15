@@ -1,0 +1,14 @@
+{
+  "parent": {
+    "type": "page_id",
+    "page_id": "5c6a28216bb14a7eb6e1c50111515c3d"
+  },
+  "rich_text": [
+    {
+      "type": "text",
+      "text": {
+        "content": "Hello world"
+      }
+    }
+  ]
+}

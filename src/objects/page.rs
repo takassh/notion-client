@@ -10,7 +10,6 @@ use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user:
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct Page {
-    pub object: String,
     pub id: String,
     pub created_time: DateTime<Utc>,
     pub created_by: User,
@@ -50,7 +49,7 @@ pub enum PageProperty {
     },
     Date {
         id: Option<String>,
-        date: DatePropertyValue,
+        date: Option<DatePropertyValue>,
     },
     Email {
         id: Option<String>,
@@ -70,7 +69,7 @@ pub enum PageProperty {
     },
     LastEditedTime {
         id: Option<String>,
-        last_edited_time: DateTime<Utc>,
+        last_edited_time: Option<DateTime<Utc>>,
     },
     MultiSelect {
         id: Option<String>,
@@ -78,7 +77,7 @@ pub enum PageProperty {
     },
     Number {
         id: Option<String>,
-        number: Number,
+        number: Option<Number>,
     },
     People {
         id: Option<String>,
@@ -91,7 +90,7 @@ pub enum PageProperty {
     Relation {
         id: Option<String>,
         relation: Vec<RelationPropertyValue>,
-        has_more: bool,
+        has_more: Option<bool>,
     },
     Rollup {
         id: Option<String>,
@@ -115,7 +114,7 @@ pub enum PageProperty {
     },
     Url {
         id: Option<String>,
-        url: String,
+        url: Option<String>,
     },
     #[serde(rename = "unique_id")]
     UniqueID {

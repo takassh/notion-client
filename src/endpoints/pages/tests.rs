@@ -66,7 +66,7 @@ fn test_create_request() {
         "Price".to_string(),
         PageProperty::Number {
             id: None,
-            number: Number::from_f64(2.5).unwrap(),
+            number: Some(Number::from_f64(2.5).unwrap()),
         },
     );
 

@@ -5,8 +5,8 @@ use serde_with::skip_serializing_none;
 #[derive(Serialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct SearchByTitleRequest {
     pub query: Option<String>,
-    pub sort: Option<Sort>,
     pub filter: Option<Filter>,
+    pub sort: Option<Sort>,
     pub start_cursor: Option<String>,
     pub page_size: Option<u32>,
 }
@@ -34,8 +34,8 @@ pub enum Timestamp {
 #[derive(Serialize, Debug, Eq, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 pub struct Filter {
-    value: FilterValue,
-    property: FilterProperty,
+    pub value: FilterValue,
+    pub property: FilterProperty,
 }
 
 #[derive(Serialize, Debug, Eq, PartialEq, Hash, Copy, Clone)]

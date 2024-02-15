@@ -4,6 +4,7 @@
 [![Crates.io](https://img.shields.io/crates/v/notion-client?style=for-the-badge)](https://crates.io/crates/notion-client)
 
 Notion API client library for rust.
+Now, this library supports all endpoints except authentication!
 
 ## Getting Started
 
@@ -74,9 +75,9 @@ async fn main() {
 - [x] add test to blocks endpoint
 - [x] add test to pages endpoint
 - [x] add test to databases endpoint
-- [ ] add test to users endpoint
-- [ ] add test to comments endpoint
-- [ ] add test to search endpoint
+- [x] add test to users endpoint
+- [x] add test to comments endpoint
+- [x] add test to search endpoint
 - [ ] add test to endpoint
 
 ## Contributing
