@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Number;
@@ -7,21 +5,15 @@ use serde_json::Number;
 use super::{file::File, rich_text::RichText, user::User};
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-pub struct Properties {
-    #[serde(flatten)]
-    pub properties: HashMap<String, Property>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum Property {
     Title {
         id: String,
-        title: Vec<RichText>,
+        title: RichText,
     },
     RichText {
         id: String,
-        rich_text: Vec<RichText>,
+        rich_text: RichText,
     },
     Number {
         number: Number,
@@ -51,7 +43,7 @@ pub enum Property {
     },
     Relation {
         id: String,
-        relation: Vec<RelationPropertyValue>,
+        relation: RelationPropertyValue,
     },
     Rollup {
         id: String,

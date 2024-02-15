@@ -2,6 +2,7 @@ use crate::{
     endpoints::blocks::{
         append::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse},
         retrieve::response::RetrieveBlockChilerenResponse,
+        update::request::UpdateABlockRequest,
     },
     objects::{
         block::{Block, BlockType, HeadingsValue, ParagraphValue, ToDoValue},
@@ -62,22 +63,25 @@ fn test_append_request() {
 
 #[test]
 fn test_update_request() {
-    let request = Block {
-        block_type: BlockType::ToDo {
-            to_do: ToDoValue {
-                rich_text: vec![RichText::Text {
-                    text: Text {
-                        content: "Lacinato kale".to_string(),
-                        link: None,
-                    },
-                    annotations: None,
-                    plain_text: None,
-                    href: None,
-                }],
-                checked: Some(false),
-                ..Default::default()
+    let request = UpdateABlockRequest {
+        block: Some(Block {
+            block_type: BlockType::ToDo {
+                to_do: ToDoValue {
+                    rich_text: vec![RichText::Text {
+                        text: Text {
+                            content: "Lacinato kale".to_string(),
+                            link: None,
+                        },
+                        annotations: None,
+                        plain_text: None,
+                        href: None,
+                    }],
+                    checked: Some(false),
+                    ..Default::default()
+                },
             },
-        },
+            ..Default::default()
+        }),
         ..Default::default()
     };
 

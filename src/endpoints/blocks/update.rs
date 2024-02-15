@@ -1,8 +1,8 @@
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{block::Block, Response},
-    NotionClientError,
-};
+pub mod request;
+
+use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
+
+use self::request::UpdateABlockRequest;
 
 use super::BlocksEndpoint;
 
@@ -10,8 +10,8 @@ impl BlocksEndpoint {
     pub async fn update_a_block(
         &self,
         block_id: &str,
-        request: Block,
-    ) -> Result<Block, NotionClientError> {
+        request: UpdateABlockRequest,
+    ) -> Result<UpdateABlockRequest, NotionClientError> {
         let json = serde_json::to_string(&request)
             .map_err(|e| NotionClientError::FailedToSerialize { source: e })?;
 

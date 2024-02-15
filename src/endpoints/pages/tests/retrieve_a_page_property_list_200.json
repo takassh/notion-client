@@ -1,0 +1,76 @@
+{
+    "object": "list",
+    "results": [
+        {
+            "object": "property_item",
+            "id": "kjPO",
+            "type": "rich_text",
+            "rich_text": {
+                "type": "text",
+                "text": {
+                    "content": "Avocado ",
+                    "link": null
+                },
+                "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                },
+                "plain_text": "Avocado ",
+                "href": null
+            }
+        },
+        {
+            "object": "property_item",
+            "id": "ijPO",
+            "type": "rich_text",
+            "rich_text": {
+                "type": "mention",
+                "mention": {
+                    "type": "page",
+                    "page": {
+                        "id": "41117fd7-69a5-4694-bc07-c1e3a682c857"
+                    }
+                },
+                "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                },
+                "plain_text": "Lemons",
+                "href": "http://notion.so/41117fd769a54694bc07c1e3a682c857"
+            }
+        },
+        {
+            "object": "property_item",
+            "id": "kjPO",
+            "type": "rich_text",
+            "rich_text": {
+                "type": "text",
+                "text": {
+                    "content": " Tomato ",
+                    "link": null
+                },
+                "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                },
+                "plain_text": " Tomato ",
+                "href": null
+            }
+        }
+    ],
+    "next_cursor": "some-next-cursor-value",
+    "has_more": true,
+    "next_url": "http://api.notion.com/v1/pages/0e5235bf86aa4efb93aa772cce7eab71/properties/NVv^?start_cursor=some-next-cursor-value&page_size=25"
+}

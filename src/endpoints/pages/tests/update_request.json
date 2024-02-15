@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "In stock": {
+      "type": "checkbox",
+      "checkbox": true
+    }
+  }
+}

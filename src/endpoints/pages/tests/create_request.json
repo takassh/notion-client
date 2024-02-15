@@ -1,0 +1,82 @@
+{
+  "parent": {
+    "type": "database_id",
+    "database_id": "d9824bdc84454327be8b5b47500af6ce"
+  },
+  "icon": {
+    "emoji": "🥬"
+  },
+  "cover": {
+    "type": "external",
+    "external": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tuscankale.jpg"
+    }
+  },
+  "properties": {
+    "Description": {
+      "type": "rich_text",
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "A dark green leafy vegetable"
+          }
+        }
+      ]
+    },
+    "Food group": {
+      "type": "select",
+      "select": {
+        "name": "Vegetable"
+      }
+    },
+    "Name": {
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Tuscan Kale"
+          }
+        }
+      ]
+    },
+    "Price": {
+      "type": "number",
+      "number": 2.5
+    }
+  },
+  "children": [
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Lacinato kale"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.",
+              "link": {
+                "url": "https://en.wikipedia.org/wiki/Lacinato_kale"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+    "object": "page",
+    "id": "7647b840-3e7a-4423-ae41-2a828f25cc84",
+    "created_time": "2024-02-15T07:12:00.000Z",
+    "last_edited_time": "2024-02-15T09:06:00.000Z",
+    "created_by": {
+        "object": "user",
+        "id": "47c09aa3-be66-474a-82eb-b9ca2039ef47"
+    },
+    "last_edited_by": {
+        "object": "user",
+        "id": "47c09aa3-be66-474a-82eb-b9ca2039ef47"
+    },
+    "cover": {
+        "type": "external",
+        "external": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Tuscankale.jpg"
+        }
+    },
+    "icon": {
+        "type": "emoji",
+        "emoji": "🥬"
+    },
+    "parent": {
+        "type": "database_id",
+        "database_id": "df40fb66-4a67-43e4-8607-e08b5e571853"
+    },
+    "archived": false,
+    "properties": {
+        "Food group": {
+            "id": "YDK~",
+            "type": "select",
+            "select": {
+                "id": "bf123f6e-bcab-4742-9011-0f7e54ee9a20",
+                "name": "Vegetable",
+                "color": "default"
+            }
+        },
+        "In stock": {
+            "id": "hPA%5B",
+            "type": "checkbox",
+            "checkbox": true
+        },
+        "Description": {
+            "id": "ynin",
+            "type": "rich_text",
+            "rich_text": [
+                {
+                    "type": "text",
+                    "text": {
+                        "content": "A dark green leafy vegetable",
+                        "link": null
+                    },
+                    "annotations": {
+                        "bold": false,
+                        "italic": false,
+                        "strikethrough": false,
+                        "underline": false,
+                        "code": false,
+                        "color": "default"
+                    },
+                    "plain_text": "A dark green leafy vegetable",
+                    "href": null
+                }
+            ]
+        },
+        "Price": {
+            "id": "%7C%3Dyz",
+            "type": "number",
+            "number": 2.5
+        },
+        "Name": {
+            "id": "title",
+            "type": "title",
+            "title": [
+                {
+                    "type": "text",
+                    "text": {
+                        "content": "Tuscan Kale",
+                        "link": null
+                    },
+                    "annotations": {
+                        "bold": false,
+                        "italic": false,
+                        "strikethrough": false,
+                        "underline": false,
+                        "code": false,
+                        "color": "default"
+                    },
+                    "plain_text": "Tuscan Kale",
+                    "href": null
+                }
+            ]
+        }
+    },
+    "url": "https://www.notion.so/Tuscan-Kale-7647b8403e7a4423ae412a828f25cc84",
+    "public_url": null,
+    "request_id": "907e63b7-ab56-4227-be79-1f6d2c75700f"
+}

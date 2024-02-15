@@ -65,14 +65,14 @@ async fn main() {
 
 - [ ] add more examples
 - [x] support blocks endpoint
-- [ ] support pages endpoint
+- [x] support pages endpoint
 - [x] support databases endpoint
 - [x] support users endpoint
 - [x] support comments endpoint
 - [x] support search endpoint
 - [ ] support authentication endpoint
 - [x] add test to blocks endpoint
-- [ ] add test to pages endpoint
+- [x] add test to pages endpoint
 - [x] add test to databases endpoint
 - [ ] add test to users endpoint
 - [ ] add test to comments endpoint

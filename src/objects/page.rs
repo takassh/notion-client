@@ -32,97 +32,98 @@ pub enum Icon {
     Emoji(Emoji),
 }
 
+#[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum PageProperty {
     Checkbox {
-        id: String,
+        id: Option<String>,
         checkbox: bool,
     },
     CreatedBy {
-        id: String,
+        id: Option<String>,
         created_by: User,
     },
     CreatedTime {
-        id: String,
+        id: Option<String>,
         created_time: DateTime<Utc>,
     },
     Date {
-        id: String,
+        id: Option<String>,
         date: DatePropertyValue,
     },
     Email {
-        id: String,
+        id: Option<String>,
         email: String,
     },
     Files {
-        id: String,
+        id: Option<String>,
         files: Vec<FilePropertyValue>,
     },
     Formula {
-        id: String,
+        id: Option<String>,
         formula: FormulaPropertyValue,
     },
     LastEditedBy {
-        id: String,
+        id: Option<String>,
         last_edited_by: User,
     },
     LastEditedTime {
-        id: String,
+        id: Option<String>,
         last_edited_time: DateTime<Utc>,
     },
     MultiSelect {
-        id: String,
+        id: Option<String>,
         multi_select: Vec<SelectPropertyValue>,
     },
     Number {
-        id: String,
+        id: Option<String>,
         number: Number,
     },
     People {
-        id: String,
+        id: Option<String>,
         people: Vec<User>,
     },
     PhoneNumber {
-        id: String,
+        id: Option<String>,
         phone_number: String,
     },
     Relation {
-        id: String,
+        id: Option<String>,
         relation: Vec<RelationPropertyValue>,
         has_more: bool,
     },
     Rollup {
-        id: String,
+        id: Option<String>,
         rollup: RollupPropertyValue,
     },
     RichText {
-        id: String,
+        id: Option<String>,
         rich_text: Vec<RichText>,
     },
     Select {
-        id: String,
+        id: Option<String>,
         select: SelectPropertyValue,
     },
     Status {
-        id: String,
+        id: Option<String>,
         status: SelectPropertyValue,
     },
     Title {
-        id: String,
+        id: Option<String>,
         title: Vec<RichText>,
     },
     Url {
-        id: String,
+        id: Option<String>,
         url: String,
     },
     #[serde(rename = "unique_id")]
     UniqueID {
-        id: String,
+        id: Option<String>,
         unique_id: UniqueIDPropertyValue,
     },
     Verification {
-        id: String,
+        id: Option<String>,
         verification: VerificationPropertyValue,
     },
 }
@@ -231,11 +232,12 @@ pub struct FilePropertyValue {
     pub file: File,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[skip_serializing_none]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct SelectPropertyValue {
-    pub color: Color,
-    pub id: String,
-    pub name: String,
+    pub id: Option<String>,
+    pub name: Option<String>,
+    pub color: Option<Color>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]

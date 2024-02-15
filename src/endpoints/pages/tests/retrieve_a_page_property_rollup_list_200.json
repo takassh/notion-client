@@ -1,0 +1,42 @@
+{
+    "object": "list",
+    "results": [
+        {
+            "object": "property_item",
+            "id": "dj2l",
+            "type": "relation",
+            "relation": {
+                "id": "83f92c9d-523d-466e-8c1f-9bc2c25a99fe"
+            }
+        },
+        {
+            "object": "property_item",
+            "id": "dj2l",
+            "type": "relation",
+            "relation": {
+                "id": "45cfb825-3463-4891-8932-7e6d8c170630"
+            }
+        },
+        {
+            "object": "property_item",
+            "id": "dj2l",
+            "type": "relation",
+            "relation": {
+                "id": "1688be1a-a197-4f2a-9688-e528c4b56d94"
+            }
+        }
+    ],
+    "next_cursor": "some-next-cursor-value",
+    "has_more": true,
+    "property_item": {
+        "id": "y}~p",
+        "next_url": "http://api.notion.com/v1/pages/0e5235bf86aa4efb93aa772cce7eab71/properties/y%7D~p?start_cursor=1QaTunT5&page_size=25",
+        "type": "rollup",
+        "rollup": {
+            "function": "sum",
+            "type": "incomplete",
+            "incomplete": {}
+        }
+    },
+    "type": "property_item"
+}
