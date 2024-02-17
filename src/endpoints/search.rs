@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::sync::Arc;
 
 use reqwest::Client;
 
@@ -6,5 +6,5 @@ use reqwest::Client;
 mod tests;
 pub mod title;
 pub struct SearchEndpoint {
-    pub(super) client: Rc<Client>,
+    pub(super) client: Arc<Client>,
 }

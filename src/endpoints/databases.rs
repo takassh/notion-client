@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::sync::Arc;
 
 use reqwest::Client;
 
@@ -10,5 +10,5 @@ mod tests;
 pub mod update;
 
 pub struct DatabasesEndpoint {
-    pub(super) client: Rc<Client>,
+    pub(super) client: Arc<Client>,
 }

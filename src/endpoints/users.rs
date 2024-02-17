@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::sync::Arc;
 
 use reqwest::Client;
 
@@ -7,5 +7,5 @@ pub mod retrieve;
 #[cfg(test)]
 mod tests;
 pub struct UsersEndpoint {
-    pub(super) client: Rc<Client>,
+    pub(super) client: Arc<Client>,
 }

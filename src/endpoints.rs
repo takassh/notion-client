@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::sync::Arc;
 
 use reqwest::{
     header::{self, HeaderMap, HeaderValue},
@@ -47,7 +47,7 @@ impl Client {
             .build()
             .map_err(|e| NotionClientError::FailedToBuildRequest { source: e })?;
 
-        let client = Rc::new(client);
+        let client = Arc::new(client);
 
         Ok(Self {
             blocks: BlocksEndpoint {
