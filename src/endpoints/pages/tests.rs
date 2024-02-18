@@ -56,10 +56,10 @@ fn test_create_request() {
         "Food group".to_string(),
         PageProperty::Select {
             id: None,
-            select: SelectPropertyValue {
+            select: Some(SelectPropertyValue {
                 name: Some("Vegetable".to_string()),
                 ..Default::default()
-            },
+            }),
         },
     );
     properties.insert(

@@ -53,7 +53,7 @@ pub enum PageProperty {
     },
     Email {
         id: Option<String>,
-        email: String,
+        email: Option<String>,
     },
     Files {
         id: Option<String>,
@@ -61,7 +61,7 @@ pub enum PageProperty {
     },
     Formula {
         id: Option<String>,
-        formula: FormulaPropertyValue,
+        formula: Option<FormulaPropertyValue>,
     },
     LastEditedBy {
         id: Option<String>,
@@ -85,7 +85,7 @@ pub enum PageProperty {
     },
     PhoneNumber {
         id: Option<String>,
-        phone_number: String,
+        phone_number: Option<String>,
     },
     Relation {
         id: Option<String>,
@@ -94,7 +94,7 @@ pub enum PageProperty {
     },
     Rollup {
         id: Option<String>,
-        rollup: RollupPropertyValue,
+        rollup: Option<RollupPropertyValue>,
     },
     RichText {
         id: Option<String>,
@@ -102,11 +102,11 @@ pub enum PageProperty {
     },
     Select {
         id: Option<String>,
-        select: SelectPropertyValue,
+        select: Option<SelectPropertyValue>,
     },
     Status {
         id: Option<String>,
-        status: SelectPropertyValue,
+        status: Option<SelectPropertyValue>,
     },
     Title {
         id: Option<String>,
@@ -119,11 +119,11 @@ pub enum PageProperty {
     #[serde(rename = "unique_id")]
     UniqueID {
         id: Option<String>,
-        unique_id: UniqueIDPropertyValue,
+        unique_id: Option<UniqueIDPropertyValue>,
     },
     Verification {
         id: Option<String>,
-        verification: VerificationPropertyValue,
+        verification: Option<VerificationPropertyValue>,
     },
 }
 
