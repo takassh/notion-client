@@ -64,6 +64,7 @@ async fn main() {
 
 ## TODO
 
+- [x] support threadsafe
 - [ ] add more examples
 - [x] support blocks endpoint
 - [x] support pages endpoint

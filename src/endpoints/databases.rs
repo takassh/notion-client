@@ -9,6 +9,7 @@ pub mod retrieve;
 mod tests;
 pub mod update;
 
+#[derive(Clone)]
 pub struct DatabasesEndpoint {
     pub(super) client: Arc<Client>,
 }

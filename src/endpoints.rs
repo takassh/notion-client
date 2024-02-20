@@ -22,6 +22,7 @@ pub mod users;
 const NOTION_URI: &str = "https://api.notion.com/v1";
 const NOTION_VERSION: &str = "2022-06-28";
 
+#[derive(Clone)]
 pub struct Client {
     pub blocks: BlocksEndpoint,
     pub comments: CommentsEndpoint,

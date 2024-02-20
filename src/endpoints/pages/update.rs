@@ -11,7 +11,7 @@ use self::request::UpdatePagePropertiesRequest;
 use super::PagesEndpoint;
 
 impl PagesEndpoint {
-    pub async fn ipdate_page_properties(
+    pub async fn update_page_properties(
         &self,
         page_id: &str,
         request: UpdatePagePropertiesRequest,
