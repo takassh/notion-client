@@ -9,7 +9,7 @@ pub mod retrieve;
 mod tests;
 pub mod update;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct BlocksEndpoint {
     pub(super) client: Arc<Client>,
 }

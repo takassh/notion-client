@@ -6,7 +6,7 @@ use reqwest::Client;
 mod tests;
 pub mod title;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct SearchEndpoint {
     pub(super) client: Arc<Client>,
 }

@@ -7,7 +7,7 @@ pub mod retrieve;
 #[cfg(test)]
 mod tests;
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct UsersEndpoint {
     pub(super) client: Arc<Client>,
 }

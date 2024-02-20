@@ -103,14 +103,17 @@ pub enum BlockType {
     TableOfContents {
         table_of_contents: TableOfContentsValue,
     },
+    TableRow {
+        table_row: TableRowsValue,
+    },
     Template {
         template: TemplateValue,
     },
     ToDo {
         to_do: ToDoValue,
     },
-    ToggleBlocks {
-        toggle_blocks: ToggleBlocksValue,
+    Toggle {
+        toggle: ToggleValue,
     },
     Video {
         video: VideoValue,
@@ -130,7 +133,7 @@ pub struct BreadcrumpValue {}
 pub struct BulletedListItemValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -207,7 +210,7 @@ pub struct LinkPreviewValue {
 pub struct NumberedListItemValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[skip_serializing_none]
@@ -229,13 +232,13 @@ pub struct PdfValue {
 pub struct QuoteValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct SyncedBlockValue {
     pub synced_from: SyncedFrom,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -249,11 +252,12 @@ pub struct TableValue {
     pub table_width: u32,
     pub has_column_header: bool,
     pub has_row_header: bool,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TableRowsValue {
-    pub cells: Vec<Block>,
+    pub cells: Option<Vec<RichText>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -264,7 +268,7 @@ pub struct TableOfContentsValue {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TemplateValue {
     pub rich_text: Vec<RichText>,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[skip_serializing_none]
@@ -277,10 +281,10 @@ pub struct ToDoValue {
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-pub struct ToggleBlocksValue {
+pub struct ToggleValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
-    pub children: Vec<Block>,
+    pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
