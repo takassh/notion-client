@@ -293,7 +293,7 @@ pub struct VideoValue {
     pub file_type: File,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum TextColor {
     Blue,

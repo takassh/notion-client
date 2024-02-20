@@ -91,7 +91,7 @@ pub enum Property {
     },
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum Color {
     Default,

@@ -60,7 +60,7 @@ pub enum Sort {
     },
 }
 
-#[derive(Serialize, Debug, Eq, PartialEq, Hash, Copy, Clone)]
+#[derive(Serialize, Debug, Eq, PartialEq, Hash, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum SortDirection {
     Ascending,

@@ -18,7 +18,7 @@ pub struct Sort {
     pub timestamp: Timestamp,
 }
 
-#[derive(Serialize, Debug, Eq, PartialEq, Hash, Copy, Clone)]
+#[derive(Serialize, Debug, Eq, PartialEq, Hash, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum SortDirection {
     Ascending,
@@ -38,7 +38,7 @@ pub struct Filter {
     pub property: FilterProperty,
 }
 
-#[derive(Serialize, Debug, Eq, PartialEq, Hash, Copy, Clone)]
+#[derive(Serialize, Debug, Eq, PartialEq, Hash, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum FilterValue {
     Page,

@@ -41,7 +41,7 @@ pub struct Text {
     pub link: Option<Link>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Copy, Clone, Default)]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 #[serde(rename_all = "snake_case")]
 pub enum TextColor {
     #[default]
