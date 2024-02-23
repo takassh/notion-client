@@ -15,10 +15,16 @@ jobs:
         run: |
           rustup component add rustfmt
           rustup component add clippy
+          rustup component add cargo-machete
+          rustup component add cargo-audit
       - name: Rust Format
         run: cargo fmt --all -- --check
       - name: Rust Clippy
         run: cargo clippy
+      - name: Rust Machete
+        run: cargo machete
+      - name: Rust Audit
+        run: cargo audit
   build:
     runs-on: ubuntu-latest
     steps:
