@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install cargo components
         run: |
-          cargo install rustfmt
           cargo install clippy
           cargo install cargo-machete
           cargo install cargo-audit
