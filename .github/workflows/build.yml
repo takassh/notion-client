@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install cargo components
         run: |
-          cargo install clippy
+          rustup component add rustfmt
+          rustup component add clippy
           cargo install cargo-machete
           cargo install cargo-audit
       - name: Rust Format
