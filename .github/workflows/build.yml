@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install cargo components
         run: |
-          rustup component add rustfmt
-          rustup component add clippy
-          rustup component add cargo-machete
-          rustup component add cargo-audit
+          cargo install rustfmt
+          cargo install clippy
+          cargo install cargo-machete
+          cargo install cargo-audit
       - name: Rust Format
         run: cargo fmt --all -- --check
       - name: Rust Clippy
