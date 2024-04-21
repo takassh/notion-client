@@ -79,7 +79,7 @@ async fn main() {
 - [x] add test to users endpoint
 - [x] add test to comments endpoint
 - [x] add test to search endpoint
-- [ ] add test to endpoint
+- [ ] support builder pattern
 
 ## Contributing
 

@@ -118,6 +118,9 @@ pub enum BlockType {
     Video {
         video: VideoValue,
     },
+    LinkToPage {
+        link_to_page: Parent,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
