@@ -1,6 +1,6 @@
 [package]
 name = "notion-client"
-version = "0.1.10"
+version = "0.1.11"
 authors = ["Takashi Kasai <takassh23@gmail.com>"]
 edition = "2021"
 repository = "https://github.com/takassh/notion-client"
