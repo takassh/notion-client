@@ -14,5 +14,5 @@ pub struct UpdatePagePropertiesRequest {
     pub properties: BTreeMap<String, PageProperty>,
     pub archived: Option<bool>,
     pub icon: Option<Icon>,
-    pub color: Option<File>,
+    pub cover: Option<File>,
 }
