@@ -131,3 +131,14 @@ pub enum TemplateMentionDate {
 pub enum TemplateMentionUser {
     Me,
 }
+
+impl RichText {
+    pub fn plain_text(&self) -> Option<String> {
+        match self {
+            RichText::None => None,
+            RichText::Equation { plain_text, .. } => Some(plain_text.clone()),
+            RichText::Mention { plain_text, .. } => Some(plain_text.clone()),
+            RichText::Text { plain_text, .. } => plain_text.clone(),
+        }
+    }
+}

@@ -414,3 +414,93 @@ pub enum Language {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 struct EmptyObject {}
+
+impl BlockType {
+    pub fn plain_text(&self) -> Vec<Option<String>> {
+        match self {
+            BlockType::None => vec![],
+            BlockType::Bookmark { bookmark } => {
+                bookmark.caption.iter().map(|rt| rt.plain_text()).collect()
+            }
+            BlockType::Breadcrumb { breadcrump: _ } => vec![],
+            BlockType::BulletedListItem { bulleted_list_item } => bulleted_list_item
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Callout { callout } => {
+                callout.rich_text.iter().map(|rt| rt.plain_text()).collect()
+            }
+            BlockType::ChildDatabase { child_database } => vec![Some(child_database.title.clone())],
+            BlockType::ChildPage { child_page } => vec![Some(child_page.title.clone())],
+            BlockType::Code { code } => code.caption.iter().map(|rt| rt.plain_text()).collect(),
+            BlockType::ColumnList { column_list: _ } => vec![],
+            BlockType::Column { column: _ } => vec![],
+            BlockType::Divider { divider: _ } => vec![],
+            BlockType::Embed { embed: _ } => vec![],
+            BlockType::Equation { equation: _ } => vec![],
+            BlockType::File { file } => file.caption.iter().map(|rt| rt.plain_text()).collect(),
+            BlockType::Heading1 { heading_1 } => heading_1
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Heading2 { heading_2 } => heading_2
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Heading3 { heading_3 } => heading_3
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Image { image: _ } => vec![],
+            BlockType::LinkPreview { link_preview: _ } => vec![],
+            BlockType::NumberedListItem { numbered_list_item } => numbered_list_item
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Paragraph { paragraph } => paragraph
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::Pdf { pdf } => pdf.caption.iter().map(|rt| rt.plain_text()).collect(),
+            BlockType::Quote { quote } => {
+                quote.rich_text.iter().map(|rt| rt.plain_text()).collect()
+            }
+            BlockType::SyncedBlock { synced_block } => {
+                let Some(children) = &synced_block.children else {
+                    return vec![];
+                };
+                children
+                    .iter()
+                    .flat_map(|b| b.block_type.plain_text())
+                    .collect()
+            }
+            BlockType::Table { table: _ } => vec![],
+            BlockType::TableOfContents {
+                table_of_contents: _,
+            } => vec![],
+            BlockType::TableRow { table_row } => {
+                let Some(cells) = &table_row.cells else {
+                    return vec![];
+                };
+                cells.iter().map(|rt| rt.plain_text()).collect()
+            }
+            BlockType::Template { template } => template
+                .rich_text
+                .iter()
+                .map(|rt| rt.plain_text())
+                .collect(),
+            BlockType::ToDo { to_do } => to_do.rich_text.iter().map(|rt| rt.plain_text()).collect(),
+            BlockType::Toggle { toggle } => {
+                toggle.rich_text.iter().map(|rt| rt.plain_text()).collect()
+            }
+            BlockType::Video { video: _ } => vec![],
+            BlockType::LinkToPage { link_to_page: _ } => vec![],
+        }
+    }
+}
