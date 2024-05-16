@@ -1,3 +1,5 @@
+
+
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
@@ -423,11 +425,24 @@ impl BlockType {
                 bookmark.caption.iter().map(|rt| rt.plain_text()).collect()
             }
             BlockType::Breadcrumb { breadcrump: _ } => vec![],
-            BlockType::BulletedListItem { bulleted_list_item } => bulleted_list_item
-                .rich_text
-                .iter()
-                .map(|rt| rt.plain_text())
-                .collect(),
+            BlockType::BulletedListItem { bulleted_list_item } => {
+                let mut items = bulleted_list_item
+                    .rich_text
+                    .iter()
+                    .map(|rt| rt.plain_text())
+                    .collect();
+                let children = &bulleted_list_item.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
+            }
             BlockType::Callout { callout } => {
                 callout.rich_text.iter().map(|rt| rt.plain_text()).collect()
             }
@@ -457,19 +472,56 @@ impl BlockType {
                 .collect(),
             BlockType::Image { image: _ } => vec![],
             BlockType::LinkPreview { link_preview: _ } => vec![],
-            BlockType::NumberedListItem { numbered_list_item } => numbered_list_item
-                .rich_text
-                .iter()
-                .map(|rt| rt.plain_text())
-                .collect(),
-            BlockType::Paragraph { paragraph } => paragraph
-                .rich_text
-                .iter()
-                .map(|rt| rt.plain_text())
-                .collect(),
+            BlockType::NumberedListItem { numbered_list_item } => {
+                let mut items = numbered_list_item
+                    .rich_text
+                    .iter()
+                    .map(|rt| rt.plain_text())
+                    .collect();
+                let children = &numbered_list_item.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
+            }
+            BlockType::Paragraph { paragraph } => {
+                let mut items = paragraph
+                    .rich_text
+                    .iter()
+                    .map(|rt| rt.plain_text())
+                    .collect();
+                let children = &paragraph.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
+            }
             BlockType::Pdf { pdf } => pdf.caption.iter().map(|rt| rt.plain_text()).collect(),
             BlockType::Quote { quote } => {
-                quote.rich_text.iter().map(|rt| rt.plain_text()).collect()
+                let mut items = quote.rich_text.iter().map(|rt| rt.plain_text()).collect();
+                let children = &quote.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
             }
             BlockType::SyncedBlock { synced_block } => {
                 let Some(children) = &synced_block.children else {
@@ -480,7 +532,15 @@ impl BlockType {
                     .flat_map(|b| b.block_type.plain_text())
                     .collect()
             }
-            BlockType::Table { table: _ } => vec![],
+            BlockType::Table { table } => {
+                let Some(children) = &table.children else {
+                    return vec![];
+                };
+                children
+                    .iter()
+                    .flat_map(|b| b.block_type.plain_text())
+                    .collect()
+            }
             BlockType::TableOfContents {
                 table_of_contents: _,
             } => vec![],
@@ -490,14 +550,51 @@ impl BlockType {
                 };
                 cells.iter().map(|rt| rt.plain_text()).collect()
             }
-            BlockType::Template { template } => template
-                .rich_text
-                .iter()
-                .map(|rt| rt.plain_text())
-                .collect(),
-            BlockType::ToDo { to_do } => to_do.rich_text.iter().map(|rt| rt.plain_text()).collect(),
+            BlockType::Template { template } => {
+                let mut items = template
+                    .rich_text
+                    .iter()
+                    .map(|rt| rt.plain_text())
+                    .collect();
+                let children = &template.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
+            }
+            BlockType::ToDo { to_do } => {
+                let mut items = to_do.rich_text.iter().map(|rt| rt.plain_text()).collect();
+                let children = &to_do.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
+            }
             BlockType::Toggle { toggle } => {
-                toggle.rich_text.iter().map(|rt| rt.plain_text()).collect()
+                let mut items = toggle.rich_text.iter().map(|rt| rt.plain_text()).collect();
+                let children = &toggle.children;
+                let Some(children) = children else {
+                    return items;
+                };
+                items.append(
+                    &mut children
+                        .iter()
+                        .flat_map(|b| b.block_type.plain_text())
+                        .collect(),
+                );
+                items
             }
             BlockType::Video { video: _ } => vec![],
             BlockType::LinkToPage { link_to_page: _ } => vec![],
