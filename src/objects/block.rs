@@ -260,7 +260,7 @@ pub struct TableValue {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TableRowsValue {
-    pub cells: Option<Vec<RichText>>,
+    pub cells: Vec<Vec<RichText>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -542,12 +542,12 @@ impl BlockType {
             BlockType::TableOfContents {
                 table_of_contents: _,
             } => vec![],
-            BlockType::TableRow { table_row } => {
-                let Some(cells) = &table_row.cells else {
-                    return vec![];
-                };
-                cells.iter().map(|rt| rt.plain_text()).collect()
-            }
+            BlockType::TableRow { table_row } => table_row
+                .cells
+                .iter()
+                .flatten()
+                .map(|rt| rt.plain_text())
+                .collect(),
             BlockType::Template { template } => {
                 let mut items = template
                     .rich_text
