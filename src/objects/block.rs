@@ -398,6 +398,7 @@ pub enum Language {
     Shell,
     Sql,
     Swift,
+    Solidity,
     Typescript,
     #[serde(rename = "vb.net")]
     VbNet,
