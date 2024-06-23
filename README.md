@@ -22,8 +22,8 @@ use notion_client::endpoints::{
     Client,
 };
 
-const NOTION_ARTICLES_DB_ID: &str = "";
-const NOTION_TOKEN: &str = "";
+const NOTION_DB_ID: &str = ""; // ⚠️ Set your DB id which can be accessible from API
+const NOTION_TOKEN: &str = ""; // ⚠️ Set your notion token
 
 #[tokio::main]
 async fn main() {
@@ -35,14 +35,6 @@ async fn main() {
 
     // Set up request parameters
     let request = QueryDatabaseRequest {
-        filter: Some(Filter::Value {
-            filter_type: FilterType::Property {
-                property: "status".to_string(),
-                condition: PropertyCondition::Select(SelectCondition::Equals(
-                    "article".to_string(),
-                )),
-            },
-        }),
         sorts: Some(vec![Sort::Timestamp {
             timestamp: Timestamp::CreatedTime,
             direction: SortDirection::Ascending,
@@ -53,7 +45,7 @@ async fn main() {
     // Send request
     let res = client
         .databases
-        .query_a_database(NOTION_ARTICLES_DB_ID, request)
+        .query_a_database(NOTION_DB_ID, request)
         .await;
 
     // See result
@@ -62,10 +54,12 @@ async fn main() {
 
 ```
 
+See more [examples](examples)
+
 ## TODO
 
 - [x] support threadsafe
-- [ ] add more examples
+- [x] add more examples
 - [x] support blocks endpoint
 - [x] support pages endpoint
 - [x] support databases endpoint
@@ -79,7 +73,7 @@ async fn main() {
 - [x] add test to users endpoint
 - [x] add test to comments endpoint
 - [x] add test to search endpoint
-- [ ] support builder pattern
+- [x] support builder pattern
 
 ## Contributing
 
