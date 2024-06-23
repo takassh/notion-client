@@ -17,7 +17,7 @@ impl SearchEndpoint {
 
         let result = self
             .client
-            .post(format!("{notion_uri}/search", notion_uri = NOTION_URI,))
+            .post(format!("{notion_uri}/search", notion_uri = NOTION_URI))
             .body(json)
             .send()
             .await
@@ -29,7 +29,7 @@ impl SearchEndpoint {
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
         let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e })?;
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
         match response {
             Response::Success(r) => Ok(r),

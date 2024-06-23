@@ -33,7 +33,10 @@ pub struct Client {
 }
 
 impl Client {
-    pub fn new(token: String) -> Result<Self, NotionClientError> {
+    pub fn new(
+        token: String,
+        mut builder: Option<ClientBuilder>,
+    ) -> Result<Self, NotionClientError> {
         let mut headers = HeaderMap::new();
         headers.insert("Notion-Version", HeaderValue::from_static(NOTION_VERSION));
         headers.insert("Content-Type", HeaderValue::from_static("application/json"));
@@ -43,12 +46,18 @@ impl Client {
         auth_value.set_sensitive(true);
         headers.insert(header::AUTHORIZATION, auth_value);
 
-        let client = ClientBuilder::new()
-            .default_headers(headers)
-            .build()
-            .map_err(|e| NotionClientError::FailedToBuildRequest { source: e })?;
+        if builder.is_none() {
+            builder = Some(ClientBuilder::new().default_headers(headers));
+        } else {
+            builder = Some(builder.unwrap().default_headers(headers));
+        }
 
-        let client = Arc::new(client);
+        let client = builder
+            .unwrap()
+            .build()
+            .map_err(|e| NotionClientError::FailedToBuildRequest { source: e });
+
+        let client = Arc::new(client.unwrap());
 
         Ok(Self {
             blocks: BlocksEndpoint {

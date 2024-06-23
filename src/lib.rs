@@ -9,8 +9,11 @@ pub enum NotionClientError {
     #[error("Failed to serialize: {}", source)]
     FailedToSerialize { source: serde_json::Error },
 
-    #[error("Failed to deserialize: {}", source)]
-    FailedToDeserialize { source: serde_json::Error },
+    #[error("Failed to deserialize: {}, body: {}", source, body)]
+    FailedToDeserialize {
+        source: serde_json::Error,
+        body: String,
+    },
 
     #[error("Failed to request: {}", source)]
     FailedToRequest { source: reqwest::Error },

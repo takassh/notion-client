@@ -1,4 +1,6 @@
-pub mod retrieve_a_page_property_item_response;
+pub mod response;
+
+use urlencoding::decode;
 
 use crate::{
     endpoints::NOTION_URI,
@@ -6,7 +8,7 @@ use crate::{
     NotionClientError,
 };
 
-use self::retrieve_a_page_property_item_response::RetrieveAPagePropertyItemResponse;
+use self::response::RetrieveAPagePropertyItemResponse;
 
 use super::PagesEndpoint;
 
@@ -14,12 +16,13 @@ impl PagesEndpoint {
     pub async fn retrieve_a_page(
         &self,
         page_id: &str,
-        filter_properties: Option<Vec<(&str, &str)>>,
+        filter_properties: Option<Vec<&str>>,
     ) -> Result<Page, NotionClientError> {
-        let mut query = vec![];
-        if let Some(filter_properties) = filter_properties {
-            query = filter_properties;
-        }
+        let filter_properties: Vec<_> = filter_properties
+            .iter()
+            .flatten()
+            .map(|p| ("filter_properties", decode(p).unwrap()))
+            .collect();
 
         let result = self
             .client
@@ -28,7 +31,7 @@ impl PagesEndpoint {
                 notion_uri = NOTION_URI,
                 page_id = page_id
             ))
-            .query(&query)
+            .query(&filter_properties)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;
@@ -39,7 +42,7 @@ impl PagesEndpoint {
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
         let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e })?;
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
         match response {
             Response::Success(r) => Ok(r),
@@ -82,7 +85,7 @@ impl PagesEndpoint {
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
         let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e })?;
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
         match response {
             Response::Success(r) => Ok(r),

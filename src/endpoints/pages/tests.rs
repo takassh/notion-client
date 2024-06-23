@@ -4,8 +4,7 @@ use serde_json::Number;
 
 use crate::{
     endpoints::pages::{
-        create::request::CreateAPageRequest,
-        retrieve::retrieve_a_page_property_item_response::RetrieveAPagePropertyItemResponse,
+        create::request::CreateAPageRequest, retrieve::response::RetrieveAPagePropertyItemResponse,
         update::request::UpdatePagePropertiesRequest,
     },
     objects::{

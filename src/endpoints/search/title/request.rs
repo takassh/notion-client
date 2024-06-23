@@ -1,8 +1,11 @@
+use derive_builder::Builder;
 use serde::Serialize;
 use serde_with::skip_serializing_none;
 
 #[skip_serializing_none]
-#[derive(Serialize, Debug, Eq, PartialEq, Clone, Default)]
+#[derive(Serialize, Debug, Eq, PartialEq, Clone, Default, Builder)]
+#[builder(setter(strip_option))]
+#[builder(default)]
 pub struct SearchByTitleRequest {
     pub query: Option<String>,
     pub filter: Option<Filter>,

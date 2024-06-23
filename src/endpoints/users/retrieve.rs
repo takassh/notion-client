@@ -25,7 +25,7 @@ impl UsersEndpoint {
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
         let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e })?;
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
         match response {
             Response::Success(r) => Ok(r),
@@ -47,7 +47,7 @@ impl UsersEndpoint {
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
         let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e })?;
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
         match response {
             Response::Success(r) => Ok(r),
