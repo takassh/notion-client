@@ -15,10 +15,7 @@ Now, this library supports all endpoints except authentication!
 ```rust
 
 use notion_client::endpoints::{
-    databases::query::request::{
-        Filter, FilterType, PropertyCondition, QueryDatabaseRequest, SelectCondition, Sort,
-        SortDirection, Timestamp,
-    },
+    databases::query::request::{QueryDatabaseRequest, Sort, SortDirection, Timestamp},
     Client,
 };
 
@@ -28,7 +25,7 @@ const NOTION_TOKEN: &str = ""; // ⚠️ Set your notion token
 #[tokio::main]
 async fn main() {
     // Initialize client
-    let client = Client::new(NOTION_TOKEN.to_string());
+    let client = Client::new(NOTION_TOKEN.to_string(), None);
     let Ok(client) = client else {
         panic!("error");
     };
