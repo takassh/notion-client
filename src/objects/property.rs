@@ -131,7 +131,7 @@ pub struct RelationPropertyValue {
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum RollupPropertyValue {
     String { string: Option<String> },
-    Number { number: Number },
+    Number { number: Option<Number> },
     Date { date: DateTime<Utc> },
     Array { results: Vec<RollupPropertyValue> },
 }

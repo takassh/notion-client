@@ -187,7 +187,7 @@ pub enum RollupPropertyValue {
     },
     Number {
         function: RollupFunction,
-        number: Number,
+        number: Option<Number>,
     },
     Unsupported {
         function: RollupFunction,
