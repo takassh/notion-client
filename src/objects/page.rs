@@ -175,11 +175,11 @@ pub struct RelationPropertyValue {
 pub enum RollupPropertyValue {
     Array {
         function: RollupFunction,
-        array: Vec<RollupPropertyValue>,
+        array: Vec<PageProperty>,
     },
     Date {
         function: RollupFunction,
-        date: DateTime<Utc>,
+        date: Option<DateTime<Utc>>,
     },
     Incomplete {
         function: RollupFunction,

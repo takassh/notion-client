@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Number;
+use serde_with::skip_serializing_none;
 
 use super::{file::File, rich_text::RichText, user::User};
 
@@ -30,8 +31,7 @@ pub enum Property {
     },
     MultiSelect {
         id: String,
-        name: String,
-        color: Color,
+        multi_select: Vec<SelectPropertyValue>,
     },
     Date {
         id: String,
@@ -104,6 +104,14 @@ pub enum Color {
     Blue,
     Purple,
     Pink,
+}
+
+#[skip_serializing_none]
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
+pub struct SelectPropertyValue {
+    pub id: Option<String>,
+    pub name: Option<String>,
+    pub color: Option<Color>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
