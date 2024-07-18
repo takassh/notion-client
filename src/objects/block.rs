@@ -136,6 +136,7 @@ pub struct BreadcrumpValue {}
 pub struct BulletedListItemValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -213,6 +214,7 @@ pub struct LinkPreviewValue {
 pub struct NumberedListItemValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -221,6 +223,7 @@ pub struct NumberedListItemValue {
 pub struct ParagraphValue {
     pub rich_text: Vec<RichText>,
     pub color: Option<TextColor>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -235,12 +238,14 @@ pub struct PdfValue {
 pub struct QuoteValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct SyncedBlockValue {
     pub synced_from: SyncedFrom,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -255,6 +260,7 @@ pub struct TableValue {
     pub table_width: u32,
     pub has_column_header: bool,
     pub has_row_header: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -271,6 +277,7 @@ pub struct TableOfContentsValue {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct TemplateValue {
     pub rich_text: Vec<RichText>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -280,6 +287,7 @@ pub struct ToDoValue {
     pub rich_text: Vec<RichText>,
     pub checked: Option<bool>,
     pub color: Option<TextColor>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
@@ -287,6 +295,7 @@ pub struct ToDoValue {
 pub struct ToggleValue {
     pub rich_text: Vec<RichText>,
     pub color: TextColor,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }
 
