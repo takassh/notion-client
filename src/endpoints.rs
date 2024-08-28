@@ -53,8 +53,7 @@ impl Client {
         let client = builder
             .unwrap()
             .build()
-            .map_err(|e| NotionClientError::FailedToBuildRequest { source: e })
-            .unwrap();
+            .map_err(|e| NotionClientError::FailedToBuildRequest { source: e })?;
 
         Ok(Self {
             blocks: BlocksEndpoint {
