@@ -1,5 +1,3 @@
-use std::sync::Arc;
-
 use reqwest::Client;
 
 pub mod create;
@@ -10,5 +8,5 @@ pub mod update;
 
 #[derive(Debug, Clone)]
 pub struct PagesEndpoint {
-    pub(super) client: Arc<Client>,
+    pub(super) client: Client,
 }
