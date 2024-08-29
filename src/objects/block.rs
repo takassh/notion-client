@@ -121,7 +121,7 @@ pub enum BlockType {
     LinkToPage {
         link_to_page: Parent,
     },
-    Unsupported
+    Unsupported,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
