@@ -121,6 +121,7 @@ pub enum BlockType {
     LinkToPage {
         link_to_page: Parent,
     },
+    Unsupported,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -606,6 +607,7 @@ impl BlockType {
             }
             BlockType::Video { video: _ } => vec![],
             BlockType::LinkToPage { link_to_page: _ } => vec![],
+            BlockType::Unsupported => vec![],
         }
     }
 }
