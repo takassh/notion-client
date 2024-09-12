@@ -82,7 +82,7 @@ fn test_create_request() {
                     .to_string(),
             },
         }),
-        properties: properties,
+        properties,
         children: Some(vec![
             Block {
                 object: Some("block".to_string()),
@@ -142,7 +142,7 @@ fn test_update_request() {
     );
 
     let request = UpdatePagePropertiesRequest {
-        properties: properties,
+        properties,
         ..Default::default()
     };
 
