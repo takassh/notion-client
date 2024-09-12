@@ -1,0 +1,42 @@
+[
+  {
+    "archived": false,
+    "created_by": {
+      "id": "5be127e8-c6d7-4a7b-a46d-a0eb3bc9d6af",
+      "object": "user"
+    },
+    "created_time": "2024-03-30T16:20:00.000Z",
+    "has_children": true,
+    "id": "3afef8a5-6870-453c-95b0-4f90c48b77ad",
+    "in_trash": false,
+    "last_edited_by": {
+      "id": "5be127e8-c6d7-4a7b-a46d-a0eb3bc9d6af",
+      "object": "user"
+    },
+    "last_edited_time": "2024-03-30T16:20:00.000Z",
+    "object": "block",
+    "parent": {
+      "page_id": "c870852e-d52d-4eb0-8618-a143adcad389",
+      "type": "page_id"
+    },
+    "synced_block": {
+      "synced_from": null
+    },
+    "type": "synced_block"
+  },
+  {
+    "object": "block",
+    "id": "block_id",
+    "created_time": "2021-11-17T22:17:00.000Z",
+    "last_edited_time": "2021-11-17T22:17:00.000Z",
+    "has_children": true,
+    "archived": false,
+    "type": "synced_block",
+    "synced_block": {
+      "synced_from": {
+          "type": "block_id",
+          "block_id": "3afef8a5-6870-453c-95b0-4f90c48b77ad"
+      }
+    }
+  }
+]

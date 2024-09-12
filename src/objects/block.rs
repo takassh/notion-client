@@ -245,7 +245,7 @@ pub struct QuoteValue {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct SyncedBlockValue {
-    pub synced_from: SyncedFrom,
+    pub synced_from: Option<SyncedFrom>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub children: Option<Vec<Block>>,
 }

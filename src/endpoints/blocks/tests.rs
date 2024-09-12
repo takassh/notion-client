@@ -130,3 +130,9 @@ fn test_link_mention_mention_deserialization() {
     ));
     assert!(result.is_ok())
 }
+
+#[test]
+fn test_deserialize_synced_from_block() {
+    let result = serde_json::from_str::<Vec<Block>>(include_str!("tests/synced_from_block.json"));
+    assert!(result.is_ok())
+}
