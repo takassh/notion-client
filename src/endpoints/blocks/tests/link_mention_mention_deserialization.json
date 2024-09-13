@@ -1,0 +1,123 @@
+{
+  "archived": false,
+  "created_by": {
+    "id": "5be127e8-c6d7-4a7b-a46d-a0eb3bc9d6af",
+    "object": "user"
+  },
+  "created_time": "2024-09-12T11:28:00.000Z",
+  "has_children": false,
+  "id": "986dad44-69dd-408a-9b5c-678dd8cab7f3",
+  "in_trash": false,
+  "last_edited_by": {
+    "id": "5be127e8-c6d7-4a7b-a46d-a0eb3bc9d6af",
+    "object": "user"
+  },
+  "last_edited_time": "2024-09-12T11:29:00.000Z",
+  "object": "block",
+  "paragraph": {
+    "color": "default",
+    "rich_text": [
+      {
+        "annotations": {
+          "bold": false,
+          "code": false,
+          "color": "default",
+          "italic": false,
+          "strikethrough": false,
+          "underline": false
+        },
+        "href": null,
+        "plain_text": "Found a great read about ",
+        "text": {
+          "content": "Found a great read about ",
+          "link": null
+        },
+        "type": "text"
+      },
+      {
+        "annotations": {
+          "bold": false,
+          "code": false,
+          "color": "default",
+          "italic": false,
+          "strikethrough": false,
+          "underline": false
+        },
+        "href": "https://www.notion.so/2e596511572a414caf28bc18da70cc7b",
+        "mention": {
+          "page": {
+            "id": "2e596511-572a-414c-af28-bc18da70cc7b"
+          },
+          "type": "page"
+        },
+        "plain_text": "digital democracy",
+        "type": "mention"
+      },
+      {
+        "annotations": {
+          "bold": false,
+          "code": false,
+          "color": "default",
+          "italic": false,
+          "strikethrough": false,
+          "underline": false
+        },
+        "href": null,
+        "plain_text": " ",
+        "text": {
+          "content": " ",
+          "link": null
+        },
+        "type": "text"
+      },
+      {
+        "annotations": {
+          "bold": false,
+          "code": false,
+          "color": "default",
+          "italic": false,
+          "strikethrough": false,
+          "underline": false
+        },
+        "href": "https://open.substack.com/pub/extelligence/p/introduction-to-a-boring-utopia?r=j1m8&utm_medium=ios",
+        "mention": {
+          "link_mention": {
+            "description": "The following is a description of a new form of government, which I call an Algorithmic Republic.",
+            "href": "https://open.substack.com/pub/extelligence/p/introduction-to-a-boring-utopia?r=j1m8&utm_medium=ios",
+            "icon_url": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9eef4cb-d8f9-4abf-9579-405c0a3a89c5%2Fapple-touch-icon-1024x1024.png",
+            "iframe_url": "https://embed.notion.co/api/iframe?app=1&theme=light&url=https%3A%2F%2Fopen.substack.com%2Fpub%2Fextelligence%2Fp%2Fintroduction-to-a-boring-utopia%3Fr%3Dj1m8%26utm_medium%3Dios&key=656ac74fac4fff346b811dca7919d483",
+            "link_author": "Some Guy",
+            "padding": 52,
+            "thumbnail_url": "https://substackcdn.com/image/fetch/f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fextelligence.substack.com%2Ftwitter%2Fsubscribe-card.jpg%3Fv%3D-829227407%26version%3D9",
+            "title": "Introduction to A Boring Utopia"
+          },
+          "type": "link_mention"
+        },
+        "plain_text": "https://open.substack.com/pub/extelligence/p/introduction-to-a-boring-utopia?r=j1m8&utm_medium=ios",
+        "type": "mention"
+      },
+      {
+        "annotations": {
+          "bold": false,
+          "code": false,
+          "color": "default",
+          "italic": false,
+          "strikethrough": false,
+          "underline": false
+        },
+        "href": null,
+        "plain_text": ". Sent it to ",
+        "text": {
+          "content": ". Sent it to ",
+          "link": null
+        },
+        "type": "text"
+      }
+    ]
+  },
+  "parent": {
+    "page_id": "1eee9da6-d568-42c5-bef1-311262c7aca0",
+    "type": "page_id"
+  },
+  "type": "paragraph"
+}

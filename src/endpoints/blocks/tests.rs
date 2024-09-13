@@ -122,3 +122,11 @@ fn test_delete_200() {
     let result = serde_json::from_str::<Block>(include_str!("tests/delete_200.json"));
     assert!(result.is_ok())
 }
+
+#[test]
+fn test_link_mention_mention_deserialization() {
+    let result = serde_json::from_str::<Block>(include_str!(
+        "tests/link_mention_mention_deserialization.json"
+    ));
+    assert!(result.is_ok())
+}

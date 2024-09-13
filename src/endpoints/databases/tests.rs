@@ -193,7 +193,7 @@ fn test_create_request() {
             plain_text: None,
             href: None,
         }]),
-        properties: properties,
+        properties,
     };
 
     let result = serde_json::to_string_pretty(&request).unwrap();
@@ -294,7 +294,7 @@ fn test_update_request() {
             plain_text: None,
             href: None,
         }]),
-        properties: properties,
+        properties,
     };
 
     let result = serde_json::to_string_pretty(&request).unwrap();
