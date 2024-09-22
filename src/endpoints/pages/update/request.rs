@@ -14,7 +14,7 @@ use crate::objects::{
 #[builder(setter(strip_option))]
 #[builder(default)]
 pub struct UpdatePagePropertiesRequest {
-    pub properties: BTreeMap<String, PageProperty>,
+    pub properties: BTreeMap<String, Option<PageProperty>>,
     pub archived: Option<bool>,
     pub icon: Option<Icon>,
     pub cover: Option<File>,

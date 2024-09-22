@@ -131,14 +131,29 @@ fn test_create_request() {
 }
 
 #[test]
+fn test_update_null_request() {
+    let mut properties = BTreeMap::new();
+    properties.insert("Date".to_string(), None);
+
+    let request = UpdatePagePropertiesRequest {
+        properties: properties,
+        ..Default::default()
+    };
+
+    let result = serde_json::to_string_pretty(&request).unwrap();
+    let actual = include_str!("tests/update_null_request.json");
+    assert_eq!(result, actual.to_string())
+}
+
+#[test]
 fn test_update_request() {
     let mut properties = BTreeMap::new();
     properties.insert(
         "In stock".to_string(),
-        PageProperty::Checkbox {
+        Some(PageProperty::Checkbox {
             id: None,
             checkbox: true,
-        },
+        }),
     );
 
     let request = UpdatePagePropertiesRequest {
