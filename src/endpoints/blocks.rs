@@ -1,5 +1,3 @@
-use std::sync::Arc;
-
 use reqwest::Client;
 
 pub mod append;
@@ -11,5 +9,5 @@ pub mod update;
 
 #[derive(Debug, Clone)]
 pub struct BlocksEndpoint {
-    pub(super) client: Arc<Client>,
+    pub(super) client: Client,
 }

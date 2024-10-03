@@ -1,5 +1,3 @@
-use std::sync::Arc;
-
 use reqwest::Client;
 
 pub mod list;
@@ -9,5 +7,5 @@ mod tests;
 
 #[derive(Debug, Clone)]
 pub struct UsersEndpoint {
-    pub(super) client: Arc<Client>,
+    pub(super) client: Client,
 }

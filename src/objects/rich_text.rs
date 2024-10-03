@@ -88,6 +88,7 @@ pub enum Mention {
     Database { database: DatabaseMention },
     Date { date: DatePropertyValue },
     LinkPreview { link_preview: LinkPreviewMention },
+    LinkMention { link_mention: LinkMentionMention },
     TemplateMention { template_mention: TemplateMention },
     Page { page: PageMention },
     User { user: User },
@@ -101,6 +102,18 @@ pub struct DatabaseMention {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct LinkPreviewMention {
     pub url: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+pub struct LinkMentionMention {
+    pub description: Option<String>,
+    pub href: Option<String>,
+    pub icon_url: Option<String>,
+    pub iframe_url: Option<String>,
+    pub link_author: Option<String>,
+    pub padding: Option<u32>,
+    pub thumbnail_url: Option<String>,
+    pub title: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
