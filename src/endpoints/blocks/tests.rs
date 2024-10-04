@@ -124,9 +124,7 @@ fn test_delete_200() {
 }
 
 #[test]
-fn test_link_mention_mention_deserialization() {
-    let result = serde_json::from_str::<Block>(include_str!(
-        "tests/link_mention_mention_deserialization.json"
-    ));
+fn test_deserialize_synced_from_block() {
+    let result = serde_json::from_str::<Vec<Block>>(include_str!("tests/synced_from_block.json"));
     assert!(result.is_ok())
 }
