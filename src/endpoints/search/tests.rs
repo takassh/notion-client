@@ -32,3 +32,12 @@ fn test_search_by_title_200() {
     ));
     assert!(result.is_ok())
 }
+
+#[test]
+fn test_search_by_title_failure() {
+    let result = serde_json::from_str::<SearchByTitleResponse>(include_str!(
+        "tests/search_by_title_failure_with_missing_unique_id.json"
+    ));
+    dbg!(&result);
+    assert!(result.is_ok())
+}
