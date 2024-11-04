@@ -125,6 +125,9 @@ pub enum PageProperty {
         id: Option<String>,
         verification: Option<VerificationPropertyValue>,
     },
+    Button {
+        id: Option<String>,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
