@@ -241,7 +241,9 @@ pub struct SelectPropertyValue {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct UniqueIDPropertyValue {
-    pub number: Number,
+    #[serde(default)]
+    #[doc = "This field is null only in extremely rare cases, for instance when it's being used as a Template for a Task in Notion's Project Management Template: https://www.notion.so/templates/notion-projects-and-tasks"]
+    pub number: Option<Number>,
     pub prefix: Option<String>,
 }
 
