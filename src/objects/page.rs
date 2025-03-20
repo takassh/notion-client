@@ -5,7 +5,10 @@ use serde::{Deserialize, Serialize};
 use serde_json::Number;
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{file::File, icon::Icon as IconType, parent::Parent, rich_text::RichText, user::User};
+
+// Re-export the Icon for backward compatibility
+pub use super::icon::Icon;
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -16,19 +19,12 @@ pub struct Page {
     pub last_edited_time: DateTime<Utc>,
     pub last_edited_by: User,
     pub archived: bool,
-    pub icon: Option<Icon>,
+    pub icon: Option<IconType>,
     pub cover: Option<File>,
     pub properties: HashMap<String, PageProperty>,
     pub parent: Parent,
     pub url: String,
     pub public_url: Option<String>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-#[serde(rename_all = "snake_case", untagged)]
-pub enum Icon {
-    File(File),
-    Emoji(Emoji),
 }
 
 #[skip_serializing_none]

@@ -4,7 +4,10 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{file::File, parent::Parent, rich_text::RichText, user::User};
+
+// Re-export the IconWithDefault as Icon for backward compatibility
+pub use super::icon::IconWithDefault as Icon;
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Eq, PartialEq, Debug, Clone)]
@@ -24,15 +27,6 @@ pub struct Database {
     pub archived: bool,
     pub is_inline: bool,
     pub public_url: Option<bool>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
-#[serde(tag = "type", rename_all = "snake_case")]
-pub enum Icon {
-    #[default]
-    None,
-    File(File),
-    Emoji(Emoji),
 }
 
 #[skip_serializing_none]
@@ -263,7 +257,7 @@ pub enum RollupFunction {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct StatusPropertyValue {
-    pub options: Vec<SelectPropertyValue>,
+    pub options: Vec<OptionValue>,
     pub groups: Vec<Group>,
 }
 

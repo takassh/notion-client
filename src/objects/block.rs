@@ -2,7 +2,10 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{file::File, icon::Icon as IconType, parent::Parent, rich_text::RichText, user::User};
+
+// Re-export the Icon for backward compatibility
+pub use super::icon::Icon;
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
@@ -144,7 +147,7 @@ pub struct BulletedListItemValue {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct CalloutValue {
     pub rich_text: Vec<RichText>,
-    pub icon: Icon,
+    pub icon: IconType,
     pub color: TextColor,
 }
 
@@ -328,13 +331,6 @@ pub enum TextColor {
     PurpleBackground,
     Red,
     RedBackground,
-}
-
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-#[serde(rename_all = "snake_case", untagged)]
-pub enum Icon {
-    File(File),
-    Emoji(Emoji),
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]

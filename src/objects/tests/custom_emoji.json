@@ -1,0 +1,8 @@
+{
+  "type": "custom_emoji",
+  "custom_emoji": {
+    "id": "1ba280e0-4829-8053-aa07-007a2ce9c564",
+    "name": "my-custom-emoji",
+    "url": "https://example.com/my-custom-emoji.png"
+  }
+}
