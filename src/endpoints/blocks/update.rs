@@ -1,6 +1,6 @@
 pub mod request;
 
-use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
+use crate::{endpoints::NOTION_URI, NotionClientError};
 
 use self::request::UpdateABlockRequest;
 
@@ -32,12 +32,9 @@ impl BlocksEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<UpdateABlockRequest>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

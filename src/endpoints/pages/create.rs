@@ -1,10 +1,6 @@
 pub mod request;
 
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{page::Page, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::page::Page, NotionClientError};
 
 use self::request::CreateAPageRequest;
 
@@ -20,7 +16,7 @@ impl PagesEndpoint {
 
         let result = self
             .client
-            .post(format!("{notion_uri}/pages", notion_uri = NOTION_URI,))
+            .post(format!("{notion_uri}/pages", notion_uri = NOTION_URI))
             .body(json)
             .send()
             .await
@@ -31,12 +27,9 @@ impl PagesEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<Page>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

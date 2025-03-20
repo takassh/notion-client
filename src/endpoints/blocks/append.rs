@@ -1,7 +1,7 @@
 pub mod request;
 pub mod response;
 
-use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
+use crate::{endpoints::NOTION_URI, NotionClientError};
 
 use self::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse};
 
@@ -33,12 +33,9 @@ impl BlocksEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<AppendBlockChildrenResponse>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

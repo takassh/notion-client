@@ -1,4 +1,4 @@
-use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
+use crate::{endpoints::NOTION_URI, NotionClientError};
 
 pub mod response;
 
@@ -23,7 +23,7 @@ impl UsersEndpoint {
 
         let result = self
             .client
-            .get(format!("{notion_uri}/users", notion_uri = NOTION_URI,))
+            .get(format!("{notion_uri}/users", notion_uri = NOTION_URI))
             .query(&query)
             .send()
             .await
@@ -34,12 +34,9 @@ impl UsersEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<ListAllUsersResponse>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

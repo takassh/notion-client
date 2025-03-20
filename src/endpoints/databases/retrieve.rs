@@ -1,8 +1,4 @@
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{database::Database, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::database::Database, NotionClientError};
 
 use super::DatabasesEndpoint;
 
@@ -27,12 +23,9 @@ impl DatabasesEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<Database>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

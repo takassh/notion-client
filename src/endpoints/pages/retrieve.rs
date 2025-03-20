@@ -2,11 +2,7 @@ pub mod response;
 
 use urlencoding::decode;
 
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{page::Page, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::page::Page, NotionClientError};
 
 use self::response::RetrieveAPagePropertyItemResponse;
 
@@ -41,13 +37,10 @@ impl PagesEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<Page>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 
     pub async fn retrieve_a_page_property_item(
@@ -84,12 +77,9 @@ impl PagesEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<RetrieveAPagePropertyItemResponse>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

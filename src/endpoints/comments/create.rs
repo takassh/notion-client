@@ -1,17 +1,13 @@
 pub mod request;
 
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{comment::Comment, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::comment::Comment, NotionClientError};
 
 use self::request::CreateCommentRequest;
 
 use super::CommentsEndpoint;
 
 impl CommentsEndpoint {
-    pub async fn create_comment(
+    pub async fn create_a_comment(
         &self,
         request: CreateCommentRequest,
     ) -> Result<Comment, NotionClientError> {
@@ -31,12 +27,9 @@ impl CommentsEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<Comment>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }
