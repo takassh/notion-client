@@ -5,12 +5,12 @@ use serde_with::skip_serializing_none;
 #[derive(Serialize, Deserialize, Clone, Debug, Eq, PartialEq, Default)]
 
 pub struct User {
-    object: String,
-    id: String,
+    pub object: String,
+    pub id: String,
     #[serde(flatten)]
-    user_type: Option<UserType>,
-    name: Option<String>,
-    avator_url: Option<String>,
+    pub user_type: Option<UserType>,
+    pub name: Option<String>,
+    pub avator_url: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, Eq, PartialEq)]
