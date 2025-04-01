@@ -46,6 +46,7 @@ pub struct Text {
 pub enum TextColor {
     #[default]
     Default,
+    DefaultBackground,
     Gray,
     Brown,
     Orange,

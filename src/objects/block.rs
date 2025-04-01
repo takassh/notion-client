@@ -317,6 +317,7 @@ pub enum TextColor {
     Brown,
     BrownBackground,
     Default,
+    DefaultBackground,
     Gray,
     GrayBackground,
     Green,
