@@ -78,5 +78,4 @@ Contributions are always welcome!
 If you have an idea, it's best to float it by us before working on it to ensure no effort is wasted.
 If there's already an open issue for it, knock yourself out.
 
-If you have any questions, feel free to use [Discussions](https://github.com/takassh/notion-client/discussions).
-Please don't hesitate to ask questions!
+Here is [`CONTRIBUTING` Guide](./CONTRIBUTING.md).
