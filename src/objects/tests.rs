@@ -3,6 +3,8 @@ use crate::objects::{
     rich_text::RichText,
 };
 
+use super::block::CalloutValue;
+
 #[test]
 fn test_error() {
     let result = serde_json::from_str::<Error>(include_str!("tests/error.json"));
@@ -49,4 +51,16 @@ fn test_external_file() {
 fn test_emoji() {
     let result = serde_json::from_str::<Emoji>(include_str!("tests/emoji.json"));
     assert!(result.is_ok())
+}
+
+#[test]
+fn test_callout() {
+    let result = serde_json::from_str::<CalloutValue>(include_str!("tests/callout.json"));
+    assert!(result.is_ok());
+}
+
+#[test]
+fn test_callout_icon_null() {
+    let result = serde_json::from_str::<CalloutValue>(include_str!("tests/callout_icon_null.json"));
+    assert!(result.is_ok());
 }
