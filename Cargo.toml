@@ -1,11 +1,11 @@
 [package]
 name = "notion-client"
-version = "1.0.6"
+version = "1.0.7"
 authors = ["Takashi Kasai <takassh23@gmail.com>"]
 edition = "2021"
 repository = "https://github.com/takassh/notion-client"
 readme = "README.md"
-description = "A Notion API Client for Rust"
+description = "A Rust client library for the Notion API"
 license = "MIT"
 
 
