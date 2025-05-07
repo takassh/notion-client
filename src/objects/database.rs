@@ -139,6 +139,11 @@ pub enum DatabaseProperty {
         name: Option<String>,
         url: HashMap<(), ()>,
     },
+    Button {
+        id: Option<String>,
+        name: Option<String>,
+        button: HashMap<(), ()>,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
