@@ -1,0 +1,26 @@
+{
+    "rich_text": [
+        {
+            "type": "text",
+            "text": {
+                "content": "Callout contents",
+                "link": null
+            },
+            "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+            },
+            "plain_text": "Callout contents",
+            "href": null
+        }
+    ],
+    "icon": {
+        "type": "emoji",
+        "emoji": "⚠️"
+    },
+    "color": "red_background"
+}

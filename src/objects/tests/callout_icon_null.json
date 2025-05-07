@@ -1,0 +1,23 @@
+{
+    "rich_text": [
+        {
+            "type": "text",
+            "text": {
+                "content": "Callout with null icon",
+                "link": null
+            },
+            "annotations": {
+                "bold": true,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+            },
+            "plain_text": "Callout with null icon",
+            "href": null
+        }
+    ],
+    "icon": null,
+    "color": "gray_background"
+}
