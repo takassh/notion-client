@@ -1,10 +1,6 @@
 pub mod response;
 
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{block::Block, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::block::Block, NotionClientError};
 
 use self::response::RetrieveBlockChilerenResponse;
 
@@ -27,13 +23,10 @@ impl BlocksEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<Block>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 
     pub async fn retrieve_block_children(
@@ -67,12 +60,9 @@ impl BlocksEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<RetrieveBlockChilerenResponse>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }

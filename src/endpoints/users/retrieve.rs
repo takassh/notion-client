@@ -1,8 +1,4 @@
-use crate::{
-    endpoints::NOTION_URI,
-    objects::{user::User, Response},
-    NotionClientError,
-};
+use crate::{endpoints::NOTION_URI, objects::user::User, NotionClientError};
 
 use super::UsersEndpoint;
 
@@ -24,19 +20,16 @@ impl UsersEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<User>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 
     pub async fn retrieve_your_tokens_bot_user(&self) -> Result<User, NotionClientError> {
         let result = self
             .client
-            .get(format!("{notion_uri}/users/me", notion_uri = NOTION_URI,))
+            .get(format!("{notion_uri}/users/me", notion_uri = NOTION_URI))
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;
@@ -46,12 +39,9 @@ impl UsersEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
+        let response = serde_json::from_str::<User>(&body)
             .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
 
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        Ok(response)
     }
 }
