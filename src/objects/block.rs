@@ -144,7 +144,7 @@ pub struct BulletedListItemValue {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct CalloutValue {
     pub rich_text: Vec<RichText>,
-    pub icon: Icon,
+    pub icon: Option<Icon>,
     pub color: TextColor,
 }
 
