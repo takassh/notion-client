@@ -170,6 +170,12 @@
       "name": "Name",
       "type": "title",
       "title": {}
+    },
+    "Button": {
+      "id": "KJOc",
+      "name": "Button",
+      "type": "button",
+      "button": {}
     }
   },
   "parent": {

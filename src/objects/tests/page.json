@@ -62,6 +62,11 @@
                     "href": null
                 }
             ]
+        },
+        "Button": {
+            "id": "KJOc",
+            "type": "button",
+            "button": {}
         }
     },
     "url": "https://www.notion.so/Bug-bash-be633bf1dfa0436db259571129a590e5",
