@@ -27,7 +27,7 @@ pub struct Database {
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
-#[serde(tag = "type", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case", untagged)]
 pub enum Icon {
     #[default]
     None,

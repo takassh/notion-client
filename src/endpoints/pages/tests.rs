@@ -73,7 +73,7 @@ fn test_create_request() {
         parent: Parent::DatabaseId {
             database_id: "d9824bdc84454327be8b5b47500af6ce".to_string(),
         },
-        icon: Some(Icon::Emoji(Emoji {
+        icon: Some(Icon::Emoji(Emoji::Emoji {
             emoji: "🥬".to_string(),
         })),
         cover: Some(File::External {
