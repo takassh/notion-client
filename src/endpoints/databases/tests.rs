@@ -176,7 +176,7 @@ fn test_create_request() {
         parent: Parent::PageId {
             page_id: "98ad959b-2b6a-4774-80ee-00246fb0ea9b".to_string(),
         },
-        icon: Some(Icon::Emoji(Emoji {
+        icon: Some(Icon::Emoji(Emoji::Emoji {
             emoji: "📝".to_string(),
         })),
         cover: Some(crate::objects::file::File::External {
