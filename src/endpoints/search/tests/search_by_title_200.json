@@ -139,8 +139,7 @@
         }
       },
       "url": "https://www.notion.so/Tuscan-kale-954b67f93f8741db887423b92bbd31ee"
-    }
-    ,
+    },
     {
       "object": "page",
       "id": "59833787-2cf9-4fdf-8782-e53db20768a5",
@@ -347,6 +346,235 @@
         }
       },
       "url": "https://www.notion.so/Tuscan-kale-598337872cf94fdf8782e53db20768a5"
+    },
+    {
+      "object": "database",
+      "id": "bc1211ca-e3f1-4939-ae34-5260b16f627c",
+      "created_time": "2021-07-08T23:50:00.000Z",
+      "last_edited_time": "2021-07-08T23:50:00.000Z",
+      "icon": {
+        "type": "emoji",
+        "emoji": "🎉"
+      },
+      "cover": {
+        "type": "external",
+        "external": {
+          "url": "https://website.domain/images/image.png"
+        }
+      },
+      "url": "https://www.notion.so/bc1211cae3f14939ae34260b16f627c",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Grocery List",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Grocery List",
+          "href": null
+        }
+      ],
+      "description": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Grocery list for just kale 🥬",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Grocery list for just kale 🥬",
+          "href": null
+        }
+      ],
+      "properties": {
+        "+1": {
+          "id": "Wp%3DC",
+          "name": "+1",
+          "type": "people",
+          "people": {}
+        },
+        "In stock": {
+          "id": "fk%5EY",
+          "name": "In stock",
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Price": {
+          "id": "evWq",
+          "name": "Price",
+          "type": "number",
+          "number": {
+            "format": "dollar"
+          }
+        },
+        "Description": {
+          "id": "V}lX",
+          "name": "Description",
+          "type": "rich_text",
+          "rich_text": {}
+        },
+        "Last ordered": {
+          "id": "eVnV",
+          "name": "Last ordered",
+          "type": "date",
+          "date": {}
+        },
+        "Meals": {
+          "id": "%7DWA~",
+          "name": "Meals",
+          "type": "relation",
+          "relation": {
+            "database_id": "668d797c-76fa-4934-9b05-ad288df2d136",
+            "synced_property_name": "Related to Grocery List (Meals)"
+          }
+        },
+        "Number of meals": {
+          "id": "Z\\Eh",
+          "name": "Number of meals",
+          "type": "rollup",
+          "rollup": {
+            "rollup_property_name": "Name",
+            "relation_property_name": "Meals",
+            "rollup_property_id": "title",
+            "relation_property_id": "mxp^",
+            "function": "count"
+          }
+        },
+        "Store availability": {
+          "id": "s}Kq",
+          "name": "Store availability",
+          "type": "multi_select",
+          "multi_select": {
+            "options": [
+              {
+                "id": "cb79b393-d1c1-4528-b517-c450859de766",
+                "name": "Duc Loi Market",
+                "color": "blue"
+              },
+              {
+                "id": "58aae162-75d4-403b-a793-3bc7308e4cd2",
+                "name": "Rainbow Grocery",
+                "color": "gray"
+              },
+              {
+                "id": "22d0f199-babc-44ff-bd80-a9eae3e3fcbf",
+                "name": "Nijiya Market",
+                "color": "purple"
+              },
+              {
+                "id": "0d069987-ffb0-4347-bde2-8e4068003dbc",
+                "name": "Gus's Community Market",
+                "color": "yellow"
+              }
+            ]
+          }
+        },
+        "Photo": {
+          "id": "yfiK",
+          "name": "Photo",
+          "type": "files",
+          "files": {}
+        },
+        "Food group": {
+          "id": "CM%3EH",
+          "name": "Food group",
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "6d4523fa-88cb-4ffd-9364-1e39d0f4e566",
+                "name": "🥦Vegetable",
+                "color": "green"
+              },
+              {
+                "id": "268d7e75-de8f-4c4b-8b9d-de0f97021833",
+                "name": "🍎Fruit",
+                "color": "red"
+              },
+              {
+                "id": "1b234a00-dc97-489c-b987-829264cfdfef",
+                "name": "💪Protein",
+                "color": "yellow"
+              }
+            ]
+          }
+        },
+        "Status": {
+          "id": "ibFn",
+          "name": "Status",
+          "type": "status",
+          "status": {
+            "options": [
+              {
+                "id": "e11e6b70-6428-4383-8077-44743e000019",
+                "name": "Not started",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "91610f41-5b67-457a-9873-16f56e81dea7",
+                "name": "In progress",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "1321771f-7a66-430e-b2bb-2950b4ebcbe0",
+                "name": "Done",
+                "color": "green",
+                "description": null
+              }
+            ],
+            "groups": [
+              {
+                "id": "52660d8c-342b-4a9b-b572-b32a2d696919",
+                "name": "To-do",
+                "color": "gray",
+                "option_ids": ["e11e6b70-6428-4383-8077-44743e000019"]
+              },
+              {
+                "id": "f50568dc-32ae-46b6-af43-852c5bf6a06d",
+                "name": "In progress",
+                "color": "blue",
+                "option_ids": ["91610f41-5b67-457a-9873-16f56e81dea7"]
+              },
+              {
+                "id": "c6fb66d3-6449-4af5-abdd-e4cea38edd66",
+                "name": "Complete",
+                "color": "green",
+                "option_ids": ["1321771f-7a66-430e-b2bb-2950b4ebcbe0"]
+              }
+            ]
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "type": "title",
+          "title": {}
+        }
+      },
+      "parent": {
+        "type": "page_id",
+        "page_id": "98ad959b-2b6a-4774-80ee-00246fb0ea9b"
+      },
+      "archived": false,
+      "is_inline": false,
+      "public_url": null
     }
   ],
   "next_cursor": null,

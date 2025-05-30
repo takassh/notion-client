@@ -268,7 +268,7 @@ pub enum RollupFunction {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct StatusPropertyValue {
-    pub options: Vec<SelectPropertyValue>,
+    pub options: Vec<OptionValue>,
     pub groups: Vec<Group>,
 }
 
