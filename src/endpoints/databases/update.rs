@@ -21,7 +21,7 @@ impl DatabasesEndpoint {
 
         let result = self
             .client
-            .post(format!(
+            .patch(format!(
                 "{notion_uri}/databases/{database_id}",
                 notion_uri = NOTION_URI,
                 database_id = database_id
