@@ -1,3 +1,5 @@
+use reqwest::Url;
+
 use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
 
 pub mod response;
@@ -21,10 +23,10 @@ impl UsersEndpoint {
             query.insert(0, ("page_size", page_size));
         }
 
+        let url = Url::parse_with_params(&format!("{NOTION_URI}/users"), query)?;
         let result = self
             .client
-            .get(format!("{notion_uri}/users", notion_uri = NOTION_URI,))
-            .query(&query)
+            .get(url)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;

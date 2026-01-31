@@ -1,5 +1,6 @@
 pub mod response;
 
+use reqwest::Url;
 use urlencoding::decode;
 
 use crate::{
@@ -24,14 +25,17 @@ impl PagesEndpoint {
             .map(|p| ("filter_properties", decode(p).unwrap()))
             .collect();
 
-        let result = self
-            .client
-            .get(format!(
+        let url = Url::parse_with_params(
+            &format!(
                 "{notion_uri}/pages/{page_id}",
                 notion_uri = NOTION_URI,
                 page_id = page_id
-            ))
-            .query(&filter_properties)
+            ),
+            filter_properties,
+        )?;
+        let result = self
+            .client
+            .get(url)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;
@@ -58,23 +62,26 @@ impl PagesEndpoint {
         start_cursor: Option<&str>,
     ) -> Result<RetrieveAPagePropertyItemResponse, NotionClientError> {
         let mut query = vec![];
-        let page_size = page_size.map(|p| p.to_string());
         if let Some(start_cursor) = start_cursor {
             query.insert(0, ("start_cursor", start_cursor));
         }
+        let page_size = page_size.map(|p| p.to_string());
         if let Some(page_size) = &page_size {
             query.insert(0, ("page_size", page_size));
         }
 
-        let result = self
-            .client
-            .get(format!(
+        let url = Url::parse_with_params(
+            &format!(
                 "{notion_uri}/pages/{page_id}/properties/{property_id}",
                 notion_uri = NOTION_URI,
                 page_id = page_id,
                 property_id = property_id,
-            ))
-            .query(&query)
+            ),
+            query,
+        )?;
+        let result = self
+            .client
+            .get(url)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;

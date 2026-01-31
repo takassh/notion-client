@@ -1,5 +1,7 @@
 pub mod response;
 
+use reqwest::Url;
+
 use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
 
 use response::RetrieveCommentsResponse;
@@ -13,7 +15,7 @@ impl CommentsEndpoint {
         start_cursor: Option<&str>,
         page_size: Option<u32>,
     ) -> Result<RetrieveCommentsResponse, NotionClientError> {
-        let mut query = vec![];
+        let mut query = vec![("block_id", block_id)];
         if let Some(start_cursor) = start_cursor {
             query.insert(0, ("start_cursor", start_cursor));
         }
@@ -22,14 +24,10 @@ impl CommentsEndpoint {
             query.insert(0, ("page_size", page_size));
         }
 
+        let url = Url::parse_with_params(&format!("{NOTION_URI}/comments"), query)?;
         let result = self
             .client
-            .get(format!(
-                "{notion_uri}/comments?block_id={block_id}",
-                notion_uri = NOTION_URI,
-                block_id = block_id,
-            ))
-            .query(&query)
+            .get(url)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;

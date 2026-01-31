@@ -1,5 +1,7 @@
 pub mod response;
 
+use reqwest::Url;
+
 use crate::{
     endpoints::NOTION_URI,
     objects::{block::Block, Response},
@@ -51,13 +53,16 @@ impl BlocksEndpoint {
             query.insert(0, ("page_size", page_size));
         }
 
-        let result = self
-            .client
-            .get(format!(
+        let url = Url::parse_with_params(
+            &format!(
                 "{notion_uri}/blocks/{block_id}/children",
                 notion_uri = NOTION_URI,
-            ))
-            .query(&query)
+            ),
+            query,
+        )?;
+        let result = self
+            .client
+            .get(url)
             .send()
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;
