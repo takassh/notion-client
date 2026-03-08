@@ -29,4 +29,10 @@ pub enum NotionClientError {
 
     #[error("Invalid header {}", source)]
     InvalidHeader { source: InvalidHeaderValue },
+
+    #[error("Invalid url {}", source)]
+    InvalidUrl {
+        #[from]
+        source: url::ParseError,
+    },
 }
