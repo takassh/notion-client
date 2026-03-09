@@ -1,9 +1,10 @@
 use reqwest::{
     header::{self, HeaderMap, HeaderValue},
-    ClientBuilder,
+    ClientBuilder, StatusCode,
 };
+use serde::de::DeserializeOwned;
 
-use crate::NotionClientError;
+use crate::{objects::error::Error, NotionClientError};
 
 use self::{
     blocks::BlocksEndpoint, comments::CommentsEndpoint, databases::DatabasesEndpoint,
@@ -18,6 +19,19 @@ pub mod search;
 pub mod users;
 
 const NOTION_URI: &str = "https://api.notion.com/v1";
+
+pub(crate) fn parse_response<T: DeserializeOwned>(
+    status: StatusCode,
+    body: String,
+) -> Result<T, NotionClientError> {
+    if !status.is_success() {
+        let error = serde_json::from_str::<Error>(&body)
+            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
+        return Err(NotionClientError::InvalidStatusCode { error });
+    }
+    serde_json::from_str::<T>(&body)
+        .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })
+}
 const NOTION_VERSION: &str = "2022-06-28";
 
 #[derive(Debug, Clone)]

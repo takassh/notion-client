@@ -1,7 +1,7 @@
 pub mod request;
 pub mod response;
 
-use crate::{endpoints::NOTION_URI, objects::Response, NotionClientError};
+use crate::{endpoints::{parse_response, NOTION_URI}, NotionClientError};
 
 use self::{request::QueryDatabaseRequest, response::QueryDatabaseResponse};
 
@@ -28,17 +28,12 @@ impl DatabasesEndpoint {
             .await
             .map_err(|e| NotionClientError::FailedToRequest { source: e })?;
 
+        let status = result.status();
         let body = result
             .text()
             .await
             .map_err(|e| NotionClientError::FailedToText { source: e })?;
 
-        let response = serde_json::from_str(&body)
-            .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })?;
-
-        match response {
-            Response::Success(r) => Ok(r),
-            Response::Error(e) => Err(NotionClientError::InvalidStatusCode { error: e }),
-        }
+        parse_response(status, body)
     }
 }

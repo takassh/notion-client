@@ -1,0 +1,7 @@
+{
+  "object": "error",
+  "status": 400,
+  "code": "validation_error",
+  "message": "body failed validation: body.paragraph.rich_text[0].text.content.length should be ≤ `2000`, instead was `2001`.",
+  "request_id": "abc-123"
+}

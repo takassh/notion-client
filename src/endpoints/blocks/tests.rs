@@ -1,9 +1,11 @@
+use reqwest::StatusCode;
+
 use crate::{
-    endpoints::blocks::{
+    endpoints::{blocks::{
         append::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse},
         retrieve::response::RetrieveBlockChilerenResponse,
         update::request::UpdateABlockRequest,
-    },
+    }, parse_response},
     objects::{
         block::{Block, BlockType, HeadingsValue, ParagraphValue, ToDoValue},
         rich_text::{Link, RichText, Text},
@@ -127,4 +129,13 @@ fn test_delete_200() {
 fn test_deserialize_synced_from_block() {
     let result = serde_json::from_str::<Vec<Block>>(include_str!("tests/synced_from_block.json"));
     assert!(result.is_ok())
+}
+
+#[test]
+fn test_update_400_returns_error() {
+    let body = include_str!("tests/update_400.json").to_string();
+    let result = parse_response::<UpdateABlockRequest>(StatusCode::BAD_REQUEST, body);
+    assert!(result.is_err());
+    let err = result.unwrap_err().to_string();
+    assert!(err.contains("validation_error"), "expected validation_error in: {err}");
 }
