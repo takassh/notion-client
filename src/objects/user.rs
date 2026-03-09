@@ -10,7 +10,8 @@ pub struct User {
     #[serde(flatten)]
     pub user_type: Option<UserType>,
     pub name: Option<String>,
-    pub avator_url: Option<String>,
+    #[serde(rename = "avatar_url")]
+    pub avatar_url: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, Eq, PartialEq)]
