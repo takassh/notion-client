@@ -1,7 +1,10 @@
 pub mod request;
 pub mod response;
 
-use crate::{endpoints::{parse_response, NOTION_URI}, NotionClientError};
+use crate::{
+    endpoints::{parse_response, NOTION_URI},
+    NotionClientError,
+};
 
 use self::{request::SearchByTitleRequest, response::SearchByTitleResponse};
 

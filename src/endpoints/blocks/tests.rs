@@ -1,11 +1,14 @@
 use reqwest::StatusCode;
 
 use crate::{
-    endpoints::{blocks::{
-        append::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse},
-        retrieve::response::RetrieveBlockChilerenResponse,
-        update::request::UpdateABlockRequest,
-    }, parse_response},
+    endpoints::{
+        blocks::{
+            append::{request::AppendBlockChildrenRequest, response::AppendBlockChildrenResponse},
+            retrieve::response::RetrieveBlockChilerenResponse,
+            update::request::UpdateABlockRequest,
+        },
+        parse_response,
+    },
     objects::{
         block::{Block, BlockType, HeadingsValue, ParagraphValue, ToDoValue},
         rich_text::{Link, RichText, Text},
@@ -137,5 +140,8 @@ fn test_update_400_returns_error() {
     let result = parse_response::<UpdateABlockRequest>(StatusCode::BAD_REQUEST, body);
     assert!(result.is_err());
     let err = result.unwrap_err().to_string();
-    assert!(err.contains("validation_error"), "expected validation_error in: {err}");
+    assert!(
+        err.contains("validation_error"),
+        "expected validation_error in: {err}"
+    );
 }

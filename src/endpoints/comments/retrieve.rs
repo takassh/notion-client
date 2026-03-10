@@ -2,7 +2,10 @@ pub mod response;
 
 use reqwest::Url;
 
-use crate::{endpoints::{parse_response, NOTION_URI}, NotionClientError};
+use crate::{
+    endpoints::{parse_response, NOTION_URI},
+    NotionClientError,
+};
 
 use response::RetrieveCommentsResponse;
 
