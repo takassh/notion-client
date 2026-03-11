@@ -423,9 +423,6 @@ pub enum Language {
     JavaOrCOrCPlusPlusOrCSharp,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-struct EmptyObject {}
-
 impl BlockType {
     pub fn plain_text(&self) -> Vec<Option<String>> {
         match self {
