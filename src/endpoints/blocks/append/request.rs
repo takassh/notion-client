@@ -10,5 +10,18 @@ use crate::objects::block::Block;
 #[builder(default)]
 pub struct AppendBlockChildrenRequest {
     pub children: Vec<Block>,
-    pub after: Option<String>,
+    pub position: Option<AppendPosition>,
+}
+
+#[derive(Serialize, Debug, Eq, PartialEq, Clone)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum AppendPosition {
+    End,
+    Start,
+    AfterBlock { after_block: AfterBlockId },
+}
+
+#[derive(Serialize, Debug, Eq, PartialEq, Clone)]
+pub struct AfterBlockId {
+    pub id: String,
 }

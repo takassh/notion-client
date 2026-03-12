@@ -20,7 +20,7 @@
         "type": "database_id",
         "database_id": "a1d8501e-1ac1-43e9-a6bd-ea9fe6c8822b"
     },
-    "archived": true,
+    "in_trash": true,
     "properties": {
         "Due date": {
             "id": "M%3BBw",

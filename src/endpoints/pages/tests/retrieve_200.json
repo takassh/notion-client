@@ -25,7 +25,7 @@
         "type": "database_id",
         "database_id": "d9824bdc-8445-4327-be8b-5b47500af6ce"
     },
-    "archived": false,
+    "in_trash": false,
     "properties": {
         "Store availability": {
             "id": "%3AUPp",

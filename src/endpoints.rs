@@ -7,12 +7,14 @@ use serde::de::DeserializeOwned;
 use crate::{objects::error::Error, NotionClientError};
 
 use self::{
-    blocks::BlocksEndpoint, comments::CommentsEndpoint, databases::DatabasesEndpoint,
-    pages::PagesEndpoint, search::SearchEndpoint, users::UsersEndpoint,
+    blocks::BlocksEndpoint, comments::CommentsEndpoint, data_sources::DataSourcesEndpoint,
+    databases::DatabasesEndpoint, pages::PagesEndpoint, search::SearchEndpoint,
+    users::UsersEndpoint,
 };
 
 pub mod blocks;
 pub mod comments;
+pub mod data_sources;
 pub mod databases;
 pub mod pages;
 pub mod search;
@@ -32,12 +34,13 @@ pub(crate) fn parse_response<T: DeserializeOwned>(
     serde_json::from_str::<T>(&body)
         .map_err(|e| NotionClientError::FailedToDeserialize { source: e, body })
 }
-const NOTION_VERSION: &str = "2022-06-28";
+const NOTION_VERSION: &str = "2026-03-11";
 
 #[derive(Debug, Clone)]
 pub struct Client {
     pub blocks: BlocksEndpoint,
     pub comments: CommentsEndpoint,
+    pub data_sources: DataSourcesEndpoint,
     pub databases: DatabasesEndpoint,
     pub pages: PagesEndpoint,
     pub search: SearchEndpoint,
@@ -74,6 +77,9 @@ impl Client {
                 client: client.clone(),
             },
             comments: CommentsEndpoint {
+                client: client.clone(),
+            },
+            data_sources: DataSourcesEndpoint {
                 client: client.clone(),
             },
             databases: DatabasesEndpoint {
