@@ -20,7 +20,10 @@ impl DataSourcesEndpoint {
 
         let result = self
             .client
-            .post(format!("{notion_uri}/data_sources", notion_uri = NOTION_URI))
+            .post(format!(
+                "{notion_uri}/data_sources",
+                notion_uri = NOTION_URI
+            ))
             .body(json)
             .send()
             .await
