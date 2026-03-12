@@ -18,6 +18,9 @@ pub enum Parent {
     BlockId {
         block_id: String,
     },
+    DataSourceId {
+        data_source_id: String,
+    },
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, Eq, PartialEq)]

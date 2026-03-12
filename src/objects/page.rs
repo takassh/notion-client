@@ -15,7 +15,7 @@ pub struct Page {
     pub created_by: User,
     pub last_edited_time: DateTime<Utc>,
     pub last_edited_by: User,
-    pub archived: bool,
+    pub in_trash: bool,
     pub icon: Option<Icon>,
     pub cover: Option<File>,
     pub properties: HashMap<String, PageProperty>,

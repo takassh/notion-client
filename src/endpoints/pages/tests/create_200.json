@@ -25,7 +25,7 @@
         "type": "database_id",
         "database_id": "df40fb66-4a67-43e4-8607-e08b5e571853"
     },
-    "archived": false,
+    "in_trash": false,
     "properties": {
         "Food group": {
             "id": "YDK~",

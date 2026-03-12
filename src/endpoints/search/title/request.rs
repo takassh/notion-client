@@ -46,6 +46,7 @@ pub struct Filter {
 pub enum FilterValue {
     Page,
     Database,
+    DataSource,
 }
 
 #[derive(Serialize, Debug, Eq, PartialEq, Clone)]

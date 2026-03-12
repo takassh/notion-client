@@ -2,6 +2,7 @@ use serde::Deserialize;
 
 pub mod block;
 pub mod comment;
+pub mod data_source;
 pub mod database;
 pub mod emoji;
 pub mod error;
