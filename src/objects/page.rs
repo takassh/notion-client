@@ -6,11 +6,7 @@ use serde_json::Number;
 use serde_with::skip_serializing_none;
 
 use super::{
-    emoji::Emoji,
-    file::File,
-    parent::Parent,
-    property::DateOrDateTime,
-    rich_text::RichText,
+    emoji::Emoji, file::File, parent::Parent, property::DateOrDateTime, rich_text::RichText,
     user::User,
 };
 
@@ -158,7 +154,6 @@ pub struct DatePropertyValue {
     pub end: Option<DateOrDateTime>,
     pub time_zone: Option<String>,
 }
-
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(tag = "type", rename_all = "snake_case")]
