@@ -1,4 +1,4 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, NaiveDate, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Number;
 use serde_with::skip_serializing_none;
@@ -116,9 +116,16 @@ pub struct SelectPropertyValue {
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct DatePropertyValue {
-    pub start: DateTime<Utc>,
-    pub end: Option<DateTime<Utc>>,
+    pub start: Option<DateOrDateTime>,
+    pub end: Option<DateOrDateTime>,
     pub time_zone: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[serde(untagged)]
+pub enum DateOrDateTime {
+    Date(NaiveDate),
+    DateTime(DateTime<Utc>),
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]

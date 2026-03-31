@@ -64,3 +64,9 @@ fn test_callout_icon_null() {
     let result = serde_json::from_str::<CalloutValue>(include_str!("tests/callout_icon_null.json"));
     assert!(result.is_ok());
 }
+
+#[test]
+fn test_mention_date_only() {
+    let result = serde_json::from_str::<RichText>(include_str!("tests/mention_date.json"));
+    assert!(result.is_ok());
+}

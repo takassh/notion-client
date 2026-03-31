@@ -1,11 +1,18 @@
 use std::collections::HashMap;
 
-use chrono::{DateTime, NaiveDate, Utc};
+use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Number;
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{
+    emoji::Emoji,
+    file::File,
+    parent::Parent,
+    property::DateOrDateTime,
+    rich_text::RichText,
+    user::User,
+};
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -152,12 +159,6 @@ pub struct DatePropertyValue {
     pub time_zone: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-#[serde(untagged)]
-pub enum DateOrDateTime {
-    Date(NaiveDate),
-    DateTime(DateTime<Utc>),
-}
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(tag = "type", rename_all = "snake_case")]
