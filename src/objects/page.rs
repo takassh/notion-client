@@ -1,11 +1,14 @@
 use std::collections::HashMap;
 
-use chrono::{DateTime, NaiveDate, Utc};
+use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::Number;
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{
+    emoji::Emoji, file::File, parent::Parent, property::DateOrDateTime, rich_text::RichText,
+    user::User,
+};
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
@@ -15,7 +18,7 @@ pub struct Page {
     pub created_by: User,
     pub last_edited_time: DateTime<Utc>,
     pub last_edited_by: User,
-    pub archived: bool,
+    pub in_trash: bool,
     pub icon: Option<Icon>,
     pub cover: Option<File>,
     pub properties: HashMap<String, PageProperty>,
@@ -150,13 +153,6 @@ pub struct DatePropertyValue {
     pub start: Option<DateOrDateTime>,
     pub end: Option<DateOrDateTime>,
     pub time_zone: Option<String>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
-#[serde(untagged)]
-pub enum DateOrDateTime {
-    Date(NaiveDate),
-    DateTime(DateTime<Utc>),
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]

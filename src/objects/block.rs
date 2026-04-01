@@ -16,7 +16,7 @@ pub struct Block {
     pub created_by: Option<User>,
     pub last_edited_time: Option<DateTime<Utc>>,
     pub last_edited_by: Option<User>,
-    pub archived: Option<bool>,
+    pub in_trash: Option<bool>,
     pub has_children: Option<bool>,
 }
 
@@ -120,6 +120,9 @@ pub enum BlockType {
     },
     LinkToPage {
         link_to_page: Parent,
+    },
+    MeetingNotes {
+        meeting_notes: MeetingNotesValue,
     },
     Unsupported,
 }
@@ -305,6 +308,9 @@ pub struct VideoValue {
     #[serde(flatten)]
     pub file_type: File,
 }
+
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
+pub struct MeetingNotesValue {}
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
@@ -604,6 +610,7 @@ impl BlockType {
             }
             BlockType::Video { video: _ } => vec![],
             BlockType::LinkToPage { link_to_page: _ } => vec![],
+            BlockType::MeetingNotes { meeting_notes: _ } => vec![],
             BlockType::Unsupported => vec![],
         }
     }

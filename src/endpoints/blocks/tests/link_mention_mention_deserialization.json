@@ -1,5 +1,5 @@
 {
-  "archived": false,
+  "in_trash": false,
   "created_by": {
     "id": "5be127e8-c6d7-4a7b-a46d-a0eb3bc9d6af",
     "object": "user"

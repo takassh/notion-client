@@ -180,7 +180,7 @@
   },
   "is_inline": false,
   "public_url": null,
-  "archived": false,
+  "in_trash": false,
   "developer_survey": "https://notionup.typeform.com/to/bllBsoI4?utm_source=postman",
   "request_id": "ed7dff2b-91c8-415e-8d0b-7a0264c26ffc"
 }

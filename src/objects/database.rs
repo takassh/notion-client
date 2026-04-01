@@ -21,7 +21,7 @@ pub struct Database {
     pub properties: HashMap<String, DatabaseProperty>,
     pub parent: Parent,
     pub url: String,
-    pub archived: bool,
+    pub in_trash: bool,
     pub is_inline: bool,
     pub public_url: Option<bool>,
 }
@@ -222,6 +222,7 @@ pub enum NumberFormat {
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
 pub struct RelationPropertyValue {
     pub database_id: Option<String>,
+    pub data_source_id: Option<String>,
     pub synced_property_id: Option<String>,
     pub synced_property_name: Option<String>,
 }

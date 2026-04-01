@@ -1,0 +1,21 @@
+{
+    "type": "mention",
+    "mention": {
+        "type": "date",
+        "date": {
+            "start": "2025-06-18",
+            "end": null,
+            "time_zone": null
+        }
+    },
+    "annotations": {
+        "bold": false,
+        "italic": false,
+        "strikethrough": false,
+        "underline": false,
+        "code": false,
+        "color": "default"
+    },
+    "plain_text": "2025-06-18",
+    "href": null
+}

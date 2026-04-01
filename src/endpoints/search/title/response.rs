@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::objects::{database::Database, page::Page};
+use crate::objects::{data_source::DataSource, database::Database, page::Page};
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct SearchByTitleResponse {
@@ -15,4 +15,5 @@ pub struct SearchByTitleResponse {
 pub enum PageOrDatabase {
     Page(Page),
     Database(Database),
+    DataSource(DataSource),
 }
