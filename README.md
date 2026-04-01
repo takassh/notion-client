@@ -10,6 +10,7 @@ Supports (almost) all endpoints — everything except authentication, for now!
 
 ## Features
 
+* ✨ Supports the latest API version 2026-03-11
 * ✅ Supports **databases**, **pages**, **blocks**, **users**, **comments**, and **search** endpoints
 * 🔒 Thread-safe client
 * 🧰 Builder pattern support
