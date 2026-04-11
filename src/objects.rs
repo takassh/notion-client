@@ -7,6 +7,7 @@ pub mod database;
 pub mod emoji;
 pub mod error;
 pub mod file;
+pub mod native_icon;
 pub mod page;
 pub mod parent;
 pub mod property;
