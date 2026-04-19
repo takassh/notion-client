@@ -2,7 +2,10 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
-use super::{emoji::Emoji, file::File, parent::Parent, rich_text::RichText, user::User};
+use super::{
+    emoji::Emoji, file::File, native_icon::NativeIcon, parent::Parent, rich_text::RichText,
+    user::User,
+};
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Default)]
@@ -341,6 +344,7 @@ pub enum TextColor {
 pub enum Icon {
     File(File),
     Emoji(Emoji),
+    NativeIcon(NativeIcon),
 }
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone)]

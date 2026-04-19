@@ -5,8 +5,8 @@ use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
 use super::{
-    database::DatabaseProperty, emoji::Emoji, file::File, parent::Parent, rich_text::RichText,
-    user::User,
+    database::DatabaseProperty, emoji::Emoji, file::File, native_icon::NativeIcon, parent::Parent,
+    rich_text::RichText, user::User,
 };
 
 #[skip_serializing_none]
@@ -37,4 +37,5 @@ pub enum Icon {
     None,
     File(File),
     Emoji(Emoji),
+    NativeIcon(NativeIcon),
 }
