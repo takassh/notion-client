@@ -99,6 +99,16 @@ Here’s our [**Contributing Guide**](./CONTRIBUTING.md).
 
 Let’s make this library even better together!
 
+## Contributors
+
+A huge thank you to everyone who has helped build this project! ✨
+
+<a href="https://github.com/takassh/notion-client/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=takassh/notion-client" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
