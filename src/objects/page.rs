@@ -6,8 +6,8 @@ use serde_json::Number;
 use serde_with::skip_serializing_none;
 
 use super::{
-    emoji::Emoji, file::File, parent::Parent, property::DateOrDateTime, rich_text::RichText,
-    user::User,
+    emoji::Emoji, file::File, native_icon::NativeIcon, parent::Parent, property::DateOrDateTime,
+    rich_text::RichText, user::User,
 };
 
 #[skip_serializing_none]
@@ -32,6 +32,7 @@ pub struct Page {
 pub enum Icon {
     File(File),
     Emoji(Emoji),
+    NativeIcon(NativeIcon),
 }
 
 #[skip_serializing_none]

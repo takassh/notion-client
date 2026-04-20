@@ -1,6 +1,6 @@
 use crate::objects::{
-    block::Block, comment::Comment, emoji::Emoji, error::Error, file::File, page::Page,
-    rich_text::RichText,
+    block::Block, comment::Comment, emoji::Emoji, error::Error, file::File,
+    native_icon::NativeIcon, page::Page, rich_text::RichText,
 };
 
 use super::block::CalloutValue;
@@ -68,5 +68,17 @@ fn test_callout_icon_null() {
 #[test]
 fn test_mention_date_only() {
     let result = serde_json::from_str::<RichText>(include_str!("tests/mention_date.json"));
+    assert!(result.is_ok());
+}
+
+#[test]
+fn test_page_icon_native() {
+    let result = serde_json::from_str::<NativeIcon>(include_str!("tests/native_icon.json"));
+    assert!(result.is_ok());
+}
+
+#[test]
+fn test_page_icon_native_page() {
+    let result = serde_json::from_str::<Page>(include_str!("tests/page_native_icon.json"));
     assert!(result.is_ok());
 }
