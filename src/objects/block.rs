@@ -378,6 +378,7 @@ pub enum Language {
     Graphql,
     Groovy,
     Haskell,
+    HCL,
     Html,
     Java,
     Javascript,
